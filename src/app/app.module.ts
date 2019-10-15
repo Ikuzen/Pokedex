@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PokedexListModule } from './pokedex-list/pokedex-list.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PokedexListModule } from './pokedex-list/pokedex-list.module';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    PokedexListModule
+    PokedexListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

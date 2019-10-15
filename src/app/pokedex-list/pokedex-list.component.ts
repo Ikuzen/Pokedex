@@ -16,15 +16,17 @@ export class PokedexListComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (let i = 0; i < 3; i++) {
-      this.pokemonList[i] = new Pokemon();
-
-      this.pokemonList[i].name = this.pokeApiService.pokemonSampleList[i];
-    }
     this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
+    // for (let i = 0; i < 3; i++) {
+      // this.pokemonList[i] = new Pokemon();
+      // this.pokeApiService.fetchPokemon('charizard')
+    // }
+      // this.pokeApiService.search('https://pokeapi.co/api/v2/pokemon/');
+
   }
 
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
   }
+
 }
