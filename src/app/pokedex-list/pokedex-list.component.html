@@ -1,0 +1,9 @@
+<mat-grid-list [cols]="breakpoint" rowHeight="2:0.5"
+  (window:resize)="onResize($event)">
+  <h1>POKEDEX</h1>
+  <mat-grid-tile class="pokemon-list" *ngFor="let pokemon of pokemonList">
+    {{pokemon.name}}
+  </mat-grid-tile>
+</mat-grid-list>
+
+<app-pokemon-overview [pokemon]=""></app-pokemon-overview>
