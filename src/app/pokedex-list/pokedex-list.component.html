@@ -1,13 +1,13 @@
 <div class="wrapper">
-  <div class="pokemon-list">
     <h1>POKEDEX</h1>
-    <mat-grid-list [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
+    <mat-grid-list class="pokemon-list"  [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
       (window:resize)="onResize($event)">
       <div *ngIf="pokeApiService.pokemonArray">
         <mat-grid-tile class="pokemon-card"
           *ngFor="let pokemon of
           pokeApiService.pokemonArray"
-          (click)="highlightPokemon(pokemon)">
+          (click)="highlightPokemon(pokemon)"
+          [style.background-color]="typeColor(pokemon)">
           <div class="list-infos">
             {{pokemon.name}}
             <div *ngFor="let type of pokemon.types">
@@ -20,8 +20,6 @@
         </mat-grid-tile>
       </div>
     </mat-grid-list>
-
-  </div>
 
   <app-pokemon-overview [pokemon]="highlightedPokemon"></app-pokemon-overview>
 </div>

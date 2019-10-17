@@ -5,6 +5,7 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 // tslint:disable-next-line: max-line-length
 import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule } from '@angular/material';
 import { PokedexListComponent } from './pokedex-list.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -23,6 +24,7 @@ import { PokedexListComponent } from './pokedex-list.component';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
+    MatTabsModule
   ]
 })
 export class PokedexListModule { }

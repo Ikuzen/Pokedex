@@ -1,9 +1,32 @@
+.wrapper{
+}
+
 .top-infos{
   display: flex;
   flex-direction: row;
+  // margin-left: 20px;
+  border-radius:25px;
+  .element-type{
+    display: flex;
+    flex-direction: column;
+    background-color: darkorchid;
+  }
+    .pokemon-info-tab{
+      border-radius: 30px ;
+      background-color: x0F9F9F9;
+    }
+  }
+
+
+//restyling
+.mat-tab-label { 
+  min-width: 72px !important;
+  padding: 5px;
+  @media (max-width: 600px){
+    min-width: 25px
+  }
 
 }
-.element-type{
-  display: flex;
-  flex-direction: row;
+.mat-tab-body-content{
+  margin-left: 20px;
 }

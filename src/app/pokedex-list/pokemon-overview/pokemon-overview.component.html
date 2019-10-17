@@ -1,15 +1,31 @@
-<div class="wrapper">
-  <div *ngIf="pokemon" [style.background-color]="typeColor(pokemon)">
-    <div class="top-infos">
-      <h2 class="name">name : {{pokemon.name}}</h2>
-      <div *ngFor="let type of pokemon.types" class="element-type">
-        <span >{{type.type.name}}</span>
-      </div>
-      #{{pokemon.id}}
-    </div>
-
-    <p>species : {{pokemon.species.name}}</p>
-    <p>height : {{pokemon.height}}</p>
-    <p>weight : {{pokemon.weight}}</p>
+ <div *ngIf="pokemon" >
+  <div class="top-infos"[style.background-color]="typeColor(pokemon)">
+    <h2 class="name">&nbsp;{{pokemon.name | uppercase}}</h2>
+    <span *ngFor="let type of pokemon.types" class="element-type">{{type.type.name}}</span>
+    #{{pokemon.id}}
   </div>
+
+  <mat-tab-group class="pokemon-info-tab" style="background-color: x0F9F9F9">
+    <mat-tab label="About" min-width="100px">
+      <ng-template matTabContent>
+        <p>species : {{pokemon.species.name}}</p>
+        <p>height : {{pokemon.height/10}}m</p>
+        <p>weight : {{pokemon.weight/10}}kg</p>
+        <p>abilities : {{pokemon.abilities[0].ability.name}},
+          {{pokemon.abilities[1].ability.name}}</p>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Base Stats">
+      <ng-template matTabContent>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Evolutions">
+      <ng-template matTabContent>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Moves">
+      <ng-template matTabContent>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </div>
