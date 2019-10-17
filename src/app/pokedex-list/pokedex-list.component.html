@@ -1,13 +1,27 @@
-<mat-grid-list [cols]="breakpoint" rowHeight="2:0.5"
-  (window:resize)="onResize($event)">
-  <h1>POKEDEX</h1>
-  <div *ngIf="pokeApiService.data">
-    <mat-grid-tile class="pokemon-list" *ngFor="let pokemon of
-      pokeApiService.data.results">
-      {{pokemon.name}}
+<div class="wrapper">
+  <div class="pokemon-list">
+    <h1>POKEDEX</h1>
+    <mat-grid-list [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
+      (window:resize)="onResize($event)">
+      <div *ngIf="pokeApiService.pokemonArray">
+        <mat-grid-tile class="pokemon-card"
+          *ngFor="let pokemon of
+          pokeApiService.pokemonArray"
+          (click)="highlightPokemon(pokemon)">
+          <div class="list-infos">
+            {{pokemon.name}}
+            <div *ngFor="let type of pokemon.types">
+              <span class="list-element-type">{{type.type.name}}</span>
+            </div>
+          </div>
+          <img class="list-image" [src]="pokemon.sprites.front_default"
+            alt="pokemon_sprite">
 
-    </mat-grid-tile>
+        </mat-grid-tile>
+      </div>
+    </mat-grid-list>
+
   </div>
-</mat-grid-list>
 
-<app-pokemon-overview [pokemon]=""></app-pokemon-overview>
+  <app-pokemon-overview [pokemon]="highlightedPokemon"></app-pokemon-overview>
+</div>

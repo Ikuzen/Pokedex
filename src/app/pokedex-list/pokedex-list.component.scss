@@ -1,4 +1,67 @@
-mat-grid-list{
+.wrapper{
+  // display: grid;
+  // grid-template-areas: "title title"
+  // "pokemon-list pokemon-overview";
+  // grid-template-columns: 40% 60%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+
+h1{
+  grid-area: title;
+  // display: flex;
+  // justify-content: center;
+}
+// mat-grid-list{
+//   display: flex;
+//   justify-content: center;
+//   // flex-basis: 50vw;
+//   // padding: 20px;
+
+// }
+mat-grid-tile{
+}
+
+#pokemon-list{
+  grid-area: pokemon-list;
+  width: 50%;
+
+
+}
+app-pokemon-overview{
+  display: flex;
+  width: 50%;
+}
+
+
+.pokemon-card{
+  display: flex;
+  grid-template-areas: "list-infos list-image";
+  grid-template-columns: "auto auto";
+  background-color: red;
+  
+  border-radius: 25px;
+   &:hover{
+    background-color: darkred;
+
+  }
+  
+}
+
+.list-element-type{
+  border-radius: 25px;
+  background-color: darksalmon;
+}
+.list-infos{
+  display: block;
+  margin-left: 20px;
+  grid-area: list-infos;
+}
+.list-image{
+  grid-area: list-image;
 }

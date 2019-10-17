@@ -9,24 +9,23 @@ import { PokeApiService } from '../pokeApiService/poke-api.service';
 })
 export class PokedexListComponent implements OnInit {
   breakpoint: number;
-  pokemonList: Pokemon[] = [];
+  public highlightedPokemon: Pokemon;
 
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
   }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-    // for (let i = 0; i < 3; i++) {
-      // this.pokemonList[i] = new Pokemon();
-      // this.pokeApiService.fetchPokemon('charizard')
-    // }
-      // this.pokeApiService.search('https://pokeapi.co/api/v2/pokemon/');
-
+    this.breakpoint = (window.innerWidth <= 1000) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+    this.breakpoint = (event.target.innerWidth <= 1000) ? 1 : 2;
+  }
+
+  highlightPokemon(pokemon){
+    this.highlightedPokemon = pokemon;
+    console.log(this.highlightedPokemon)
   }
 
 }
