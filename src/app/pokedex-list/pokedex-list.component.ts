@@ -16,11 +16,11 @@ export class PokedexListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 700) ? 1 : 2;
+    this.breakpoint = (window.innerWidth <= 800) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 700) ? 1 : 2;
+    this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 2;
   }
 
   highlightPokemon(pokemon){
@@ -32,17 +32,17 @@ export class PokedexListComponent implements OnInit {
     for (const type of pokemon.types){
       switch(type.type.name){
         case 'grass':
-          return 'green';
+          return 'ForestGreen';
         case 'poison':
-          return 'green';
+          return 'LimeGreen';
         case 'fire':
           return 'red';
         case 'water':
-          return 'blue';
+          return 'DodgerBlue';
         case 'electric':
           return 'yellow';
       }
     }
-    return 'gray';
+    return 'silver';
   }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PokemonOverviewComponent } from './pokemon-overview/pokemon-overview.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 // tslint:disable-next-line: max-line-length
-import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule } from '@angular/material';
+import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { PokedexListComponent } from './pokedex-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -24,7 +24,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressBarModule
   ]
 })
 export class PokedexListModule { }

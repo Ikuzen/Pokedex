@@ -17,8 +17,8 @@ export class PokemonOverviewComponent implements OnInit {
   ngOnInit() {
   }
   typeColor(pokemon): string {
-    for (const type of pokemon.types){
-      switch(type.type.name){
+    for (const type of pokemon.types) {
+      switch (type.type.name) {
         case 'grass':
           return 'green';
         case 'poison':
@@ -33,4 +33,12 @@ export class PokemonOverviewComponent implements OnInit {
     }
     return 'gray';
   }
+  totalStats(): number {
+    // tslint:disable-next-line:max-line-length
+    return  (this.pokemon.stats[0].base_stat + this.pokemon.stats[1].base_stat + this.pokemon.stats[2].base_stat + this.pokemon.stats[3].base_stat + this.pokemon.stats[4].base_stat + this.pokemon.stats[5].base_stat) / 6;
+  }
+  barColor(stat: number): string {
+    return stat > 50 ? 'primary' : 'warn';
+  }
 }
+
