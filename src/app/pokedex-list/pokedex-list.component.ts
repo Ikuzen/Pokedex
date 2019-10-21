@@ -23,14 +23,17 @@ export class PokedexListComponent implements OnInit {
     this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 2;
   }
 
-  highlightPokemon(pokemon){
+  highlightPokemon(pokemon) {
     this.highlightedPokemon = pokemon;
-    console.log(this.highlightedPokemon)
+    console.log(this.highlightedPokemon);
   }
 
   typeColor(pokemon): string {
-    for (const type of pokemon.types){
-      switch(type.type.name){
+    if (this.highlightedPokemon === pokemon) {
+      return 'silver';
+    }
+    for (const type of pokemon.types) {
+      switch (type.type.name) {
         case 'grass':
           return 'ForestGreen';
         case 'poison':
@@ -44,5 +47,9 @@ export class PokedexListComponent implements OnInit {
       }
     }
     return 'silver';
+  }
+  metallicBackground(): string {
+    // tslint:disable-next-line:max-line-length
+    return '-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),-webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);';
   }
 }

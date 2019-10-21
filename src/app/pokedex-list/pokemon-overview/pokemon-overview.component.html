@@ -1,4 +1,4 @@
- <div *ngIf="pokemon">
+<!-- <div *ngIf="pokemon">
   <div class="top-infos" [style.background-color]="typeColor(pokemon)">
     <div class="top-container-1">
       <h2 class="name">&nbsp;{{pokemon.name | uppercase}}</h2>
@@ -66,4 +66,77 @@
       </ng-template>
     </mat-tab>
   </mat-tab-group>
-</div>
+</div> -->
+<mat-card *ngIf="pokemon" class="pokemon-card-2">
+  <mat-card-header class="top-infos"
+    [style.background-color]="typeColor(pokemon)">
+    <div class="top-container-1">
+      <mat-card-title class="name">&nbsp;{{pokemon.name | uppercase}}</mat-card-title>
+      <mat-card-subtitle class="all-types">
+        <span *ngFor="let type of pokemon.types" class="element-type">&nbsp;{{type.type.name}}&nbsp;</span>
+      </mat-card-subtitle>
+    </div>
+    <div class="top-container-2">
+      #{{pokemon.id}}
+    </div>
+    <div class="middle-container">
+      <img class="pokemon-image" [src]="pokemon.sprites.front_default"
+        alt="pokemon sprite">
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-tab-group class="pokemon-info-tab">
+      <mat-tab class="about" label="About" min-width="100px">
+        <ng-template matTabContent>
+          <p>Species : {{pokemon.species.name}}</p>
+          <p>Height : {{pokemon.height/10}}m</p>
+          <p>Weight : {{pokemon.weight/10}}kg</p>
+          <p>Abilities : {{pokemon.abilities[0].ability.name}},
+            {{pokemon.abilities[1].ability.name}}</p>
+
+          <h2 style="font-size: 100%;">Breeding</h2>
+          <p>Gender : </p>
+          <p>Egg groups :</p>
+          <p>Egg cycle :</p>
+        </ng-template>
+      </mat-tab>
+      <mat-tab class="base-stats" label="Base Stats">
+        <ng-template matTabContent>
+          <div class="hp"><p>HP</p><mat-progress-bar
+              [color]="barColor(pokemon.stats[5].base_stat)"
+              [value]="pokemon.stats[5].base_stat"></mat-progress-bar></div>
+          <div class="attack"><p>Attack</p><mat-progress-bar
+              [color]="barColor(pokemon.stats[4].base_stat)"
+              [value]="pokemon.stats[4].base_stat"></mat-progress-bar></div>
+          <div class="defense"><p>Defense</p> <mat-progress-bar
+              [color]="barColor(pokemon.stats[3].base_stat)"
+              [value]="pokemon.stats[3].base_stat"></mat-progress-bar> </div>
+          <div class="sp-atk"><p>Sp.Atk</p><mat-progress-bar
+              [color]="barColor(pokemon.stats[2].base_stat)"
+              [value]="pokemon.stats[2].base_stat"></mat-progress-bar> </div>
+          <div class="sp-def"><p>Sp.Def</p><mat-progress-bar
+              [color]="barColor(pokemon.stats[1].base_stat)"
+              [value]="pokemon.stats[1].base_stat"></mat-progress-bar> </div>
+          <div class="speed"><p>Speed</p><mat-progress-bar
+              [color]="barColor(pokemon.stats[0].base_stat)"
+              [value]="pokemon.stats[0].base_stat"></mat-progress-bar> </div>
+          <div class="total"><p>Total</p><mat-progress-bar
+              [color]="barColor(totalStats())" [value]="totalStats()"></mat-progress-bar>
+          </div>
+          <p>&nbsp;</p>
+        </ng-template>
+      </mat-tab>
+      <mat-tab class="evolutions" label="Evolutions">
+        <ng-template matTabContent>
+
+        </ng-template>
+      </mat-tab>
+      <mat-tab class="moves" label="Moves">
+        <ng-template matTabContent>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
