@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonOverviewComponent } from './pokemon-overview.component';
+import { Pokemon } from 'src/app/pokemon';
 
 describe('PokemonOverviewComponent', () => {
   let component: PokemonOverviewComponent;
@@ -21,5 +22,11 @@ describe('PokemonOverviewComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return correct color when calling method typeColor', () => {
+    const mockPokemon = new Pokemon();
+    mockPokemon.types =  ['fire'];
+    expect(component.typeColor(mockPokemon)).toBe('red');
   });
 });

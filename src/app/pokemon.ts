@@ -3,10 +3,11 @@ export class Pokemon {
   name: string;
   types: string[];
   species: string;
-  height: number[];
-  weight: number[];
-  abilities: string[];
-
+  height: number;
+  weight: number;
+  moves: object;
+  images: object;
+  stats: object;
 
 
 
