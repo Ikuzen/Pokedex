@@ -16,9 +16,6 @@ export class PokeApiService {
   error: any;
 
   constructor(private http: HttpClient) {
-    for (const pokemon of this.pokemonSampleList){
-      this.fetchPokemon(pokemon);
-    }
   }
 
 

@@ -15,6 +15,7 @@ export class PokemonOverviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
   typeColor(pokemon): string {
     for (const type of pokemon.types) {

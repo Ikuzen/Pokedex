@@ -6,6 +6,7 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule } from '@angular/material';
 import { PokedexListComponent } from './pokedex-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -26,7 +27,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatInputModule,
     MatTabsModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    ScrollingModule
   ]
 })
 export class PokedexListModule { }

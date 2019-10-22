@@ -1,10 +1,14 @@
 <div class="wrapper">
-    <h1>POKEDEX</h1>
-    <mat-grid-list class="pokemon-list"  [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
-      (window:resize)="onResize($event)">
-      <div *ngIf="pokeApiService.pokemonArray">
+  <h1>POKEDEX</h1>
+
+  <mat-grid-list class="pokemon-list" [cols]="breakpoint" rowHeight="150px"
+    gutterSize="20px"
+    (window:resize)="onResize($event)">
+    <div *ngIf="pokeApiService.pokemonArray.length >=
+      pokeApiService.pokemonSampleList.length">
+      <cdk-virtual-scroll-viewport templateCacheSize ="2" itemSize="100" class="example-viewport">
         <mat-grid-tile class="pokemon-card"
-          *ngFor="let pokemon of
+          *cdkVirtualFor="let pokemon of
           pokeApiService.pokemonArray"
           colspan="1"
           rowspan="1"
@@ -20,8 +24,9 @@
             alt="pokemon_sprite">
 
         </mat-grid-tile>
-      </div>
-    </mat-grid-list>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </mat-grid-list>
 
   <app-pokemon-overview [pokemon]="highlightedPokemon"></app-pokemon-overview>
 </div>
