@@ -6,9 +6,8 @@
     (window:resize)="onResize($event)">
     <div *ngIf="pokeApiService.pokemonArray.length >=
       pokeApiService.pokemonSampleList.length">
-      <cdk-virtual-scroll-viewport templateCacheSize ="2" itemSize="100" class="example-viewport">
         <mat-grid-tile class="pokemon-card"
-          *cdkVirtualFor="let pokemon of
+          *ngFor="let pokemon of
           pokeApiService.pokemonArray"
           colspan="1"
           rowspan="1"
@@ -24,7 +23,6 @@
             alt="pokemon_sprite">
 
         </mat-grid-tile>
-      </cdk-virtual-scroll-viewport>
     </div>
   </mat-grid-list>
 
