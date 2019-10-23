@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <h1>POKEDEX</h1>
+    <h1 (click)="pokeApiService.populatePokemonList()">POKEDEX</h1>
     <mat-grid-list class="pokemon-list"  [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
       (window:resize)="onResize($event)">
       <div *ngIf="pokeApiService.pokemonArray">
