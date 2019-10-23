@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Pokemon } from '../pokemon';
-import { PokeApiService } from '../pokeApiService/poke-api.service';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
+import { Pokemon } from '../../pokemon';
+import { PokeApiService } from '../../pokeApiService/poke-api.service';
 
 @Component({
   selector: 'app-pokedex-list',
@@ -9,9 +9,9 @@ import { PokeApiService } from '../pokeApiService/poke-api.service';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokedexListComponent implements OnInit {
+  @Output() highlightedPokemon = new EventEmitter<Pokemon>();
   breakpoint: number;
   error: any;
-  public highlightedPokemon: Pokemon;
   private pokemonUrlList: string[] = [];
   public pokemonArray: object[] = [];
   private nextPageUrl;
@@ -31,7 +31,7 @@ export class PokedexListComponent implements OnInit {
   }
 
   getPokemonUrls() {
-    this.pokeApiService.fetchAllPokemons().subscribe((pokemonRequest: string[]) => {
+    this.pokeApiService.getPokemonUrls().subscribe((pokemonRequest: any[]) => {
       this.nextPageUrl = pokemonRequest.next;
       this.previousPageUrl = pokemonRequest.previous;
       this.pokemonUrlList = pokemonRequest.results.map(x => x.url);
@@ -52,7 +52,7 @@ export class PokedexListComponent implements OnInit {
   }
 
   highlightPokemon(pokemon) {
-    this.highlightedPokemon = pokemon;
+    this.highlightedPokemon.emit(pokemon);
     console.log(this.highlightedPokemon);
   }
 

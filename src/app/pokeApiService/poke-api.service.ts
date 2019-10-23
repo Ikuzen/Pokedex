@@ -16,11 +16,11 @@ export class PokeApiService {
   constructor(private http: HttpClient) {
   }
 
-  fetchAllPokemons(url = this.baseURL) {
+  getPokemonUrls(url = this.baseURL) {
     console.log('fetching pokemons');
     return this.http.get(url)
     .pipe(
-      finalize(() => { // callback at the end always
+      finalize(() => {
       })
     );
   }
@@ -29,7 +29,7 @@ export class PokeApiService {
     console.log('fetching pokemon');
     return this.http.get(pokemonURL)
     .pipe(
-      finalize(() => { // callback at the end always
+      finalize(() => {
       })
     );
   }

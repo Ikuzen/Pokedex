@@ -1,20 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 // tslint:disable-next-line: max-line-length
-import {LayoutModule} from '@angular/cdk/layout';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { PokedexListModule } from './pokedex-list/pokedex-list.module';
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { PokedexListComponent } from './main-page/pokedex-list/pokedex-list.component';
+import { PokemonOverviewComponent } from './main-page/pokemon-overview/pokemon-overview.component'
+import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule, MatTabsModule } from '@angular/material';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainPageComponent,
+    PokedexListComponent,
+    PokemonOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,8 +31,19 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    PokedexListModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTabsModule,
+    MatProgressBarModule,
+    MatCardModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
