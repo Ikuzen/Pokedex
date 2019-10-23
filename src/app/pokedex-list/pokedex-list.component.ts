@@ -1,23 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { PokeApiService } from '../pokeApiService/poke-api.service';
 
 @Component({
   selector: 'app-pokedex-list',
   templateUrl: './pokedex-list.component.html',
-  styleUrls: ['./pokedex-list.component.scss']
+  styleUrls: ['./pokedex-list.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PokedexListComponent implements OnInit {
   breakpoint: number;
+  error: any;
   public highlightedPokemon: Pokemon;
+  private pokemonUrlList: string[] = [];
+  public pokemonArray: object[] = [];
+  private nextPageUrl;
+  private previousPageUrl;
 
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
+    this.getPokemonUrls();
   }
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 2;
+
+    for (const pokemon of this.pokeApiService.pokemonSampleListURL) {
+      this.pokeApiService.fetchPokemon(pokemon);
+    }
   }
+
+  getPokemonUrls() {
+    this.pokeApiService.fetchAllPokemons().subscribe((pokemonRequest: string[]) => {
+      this.nextPageUrl = pokemonRequest.next;
+      this.previousPageUrl = pokemonRequest.previous;
+      this.pokemonUrlList = pokemonRequest.results.map(x => x.url);
+      this.pokemonUrlList.forEach((pokemonUrl: any) => {
+        this.pokeApiService.fetchPokemon(pokemonUrl).subscribe((pokemonObject: object) => {
+          this.pokemonArray.push(pokemonObject);
+
+    }, (error) => {
+      console.log(error);
+      this.error = error.statusText;
+    });
+  });
+});
+}
 
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 2;
@@ -47,9 +75,5 @@ export class PokedexListComponent implements OnInit {
       }
     }
     return 'silver';
-  }
-  metallicBackground(): string {
-    // tslint:disable-next-line:max-line-length
-    return '-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),-webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%);';
   }
 }
