@@ -2,7 +2,9 @@
 <div class="wrapper">
   <div class="top">
     <h1>POKEDEX</h1>
+    <button *ngIf = "previousPageUrl" (click)="previousPage()">previous</button>
+    <button *ngIf = "nextPageUrl" (click)="nextPage()">Next Page</button>
   </div>
-  <app-pokedex-list (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+  <app-pokedex-list [pokemonArray]="pokemonArray" (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
   <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
 </div>

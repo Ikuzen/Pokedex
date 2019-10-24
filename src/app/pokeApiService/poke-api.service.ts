@@ -10,7 +10,7 @@ export class PokeApiService {
   // tslint:disable-next-line:max-line-length
   pokemonSampleListURL: string[] = [];
   public pokemonArray: object[] = [];
-  private baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+  public baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=20';
 
 
   constructor(private http: HttpClient) {
@@ -25,7 +25,7 @@ export class PokeApiService {
     );
   }
 
-  fetchPokemon(pokemonURL) {
+  getPokemon(pokemonURL) {
     console.log('fetching pokemon');
     return this.http.get(pokemonURL)
     .pipe(
