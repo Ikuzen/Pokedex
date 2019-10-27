@@ -17,13 +17,13 @@ export class MainPageComponent implements OnInit {
 
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
-    this.getPokemonUrls(); }
+  }
 
   ngOnInit() {
-    for (const pokemon of this.pokeApiService.pokemonSampleListURL) {
-      this.pokeApiService.getPokemon(pokemon);
-    }
+    this.getPokemonUrls();
+
   }
+
   getPokemonUrls(url = this.pokeApiService.baseURL) {
     this.pokeApiService.getPokemonUrls(url).subscribe((pokemonRequest: any) => {
       this.nextPageUrl = pokemonRequest.next;
@@ -33,6 +33,7 @@ export class MainPageComponent implements OnInit {
         this.pokeApiService.getPokemon(pokemonUrl).subscribe((pokemonObject: object) => {
           this.pokemonArray.push(pokemonObject);
 
+
     }, (error) => {
       console.log(error);
       this.error = error.statusText;
@@ -41,7 +42,7 @@ export class MainPageComponent implements OnInit {
 });
 }
 
-  emitPokemon(pokemon: Pokemon) {
+emitPokemon(pokemon: Pokemon) {
     this.currentPokemon = pokemon;
     console.log(this.currentPokemon);
 }

@@ -18,7 +18,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-tab-group class="pokemon-info-tab">
+    <mat-tab-group class="pokemon-info-tab" (selectedTabChange)="onTabChange($event)">
       <mat-tab class="about" label="About" min-width="100px">
         <ng-template matTabContent>
           <p>Species : {{pokemon.species.name}}</p>
@@ -54,7 +54,7 @@
               [color]="barColor(pokemon.stats[0].base_stat)"
               [value]="pokemon.stats[0].base_stat"></mat-progress-bar> </div>
           <div class="total"><p>Total</p><mat-progress-bar
-              [color]="barColor(totalStats())" [value]="totalStats()"></mat-progress-bar>
+              [color]="barColor(totalStats(pokemon))" [value]="totalStats(pokemon)"></mat-progress-bar>
           </div>
           <p>&nbsp;</p>
         </ng-template>

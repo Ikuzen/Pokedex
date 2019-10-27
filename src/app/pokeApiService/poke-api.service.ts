@@ -8,7 +8,6 @@ import { Pokemon } from '../pokemon';
 })
 export class PokeApiService {
   // tslint:disable-next-line:max-line-length
-  pokemonSampleListURL: string[] = [];
   public pokemonArray: object[] = [];
   public baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=20';
 
