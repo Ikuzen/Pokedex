@@ -1,13 +1,13 @@
 .wrapper{
   display: grid;
-  grid-template-areas: "top top top"
-  "pokemon-list . pokemon-overview";
-  grid-template-columns: 45% 5% 50%;
+  grid-template-areas: "top top top top"
+  "pokemon-list . pokemon-overview .";
+  grid-template-columns: 35% 5% 30% 40%;
   width: 90vw;
   max-height: 100vh;
   margin: 0 auto;
-  
   overflow: hidden;
+
   
   .top{
     grid-area: top;

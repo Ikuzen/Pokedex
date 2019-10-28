@@ -24,6 +24,8 @@ export class PokeApiService {
     );
   }
 
+
+
   getPokemon(pokemonURL) {
     console.log('fetching pokemon');
     return this.http.get(pokemonURL)
@@ -33,4 +35,11 @@ export class PokeApiService {
     );
   }
 
+  getAllPokemonUrls(url = 'https://pokeapi.co/api/v2/pokemon?limit=964'){
+    return this.http.get(url)
+    .pipe(
+      finalize(() => {
+      })
+    );
+  }
 }

@@ -1,10 +1,44 @@
 
 <div class="wrapper">
-  <div class="top">
-    <h1>POKEDEX</h1>
-    <button *ngIf = "previousPageUrl" (click)="previousPage()">previous</button>
-    <button *ngIf = "nextPageUrl" (click)="nextPage()">Next Page</button>
+  <div class="top" >
+    <div style="display:flex">
+      <h1>POKEDEX</h1>
+      <button mat-flat-button color="accent" *ngIf="previousPageUrl"
+        (click)="previousPage()">Previous</button>
+      <button mat-flat-button color="primary" *ngIf="nextPageUrl"
+        (click)="nextPage()">Next Page</button>
+      <button mat-mini-fab style="align-self: flex-end;" color="primary"
+        (click)="search()">search</button>
+      <app-search-bar *ngIf="displaySearchBar" [allPokemonArray]="allPokemonArray"></app-search-bar>
+    </div>
+
   </div>
-  <app-pokedex-list [pokemonArray]="pokemonArray" (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+  <app-pokedex-list [pokemonArray]="pokemonArray"
+    (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
   <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
 </div>
+
+
+
+<!-- 
+<mat-grid-list cols="2" rowHeight="70vh" class="wrapper">
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+    <div>
+      <h1>POKEDEX</h1>
+      <button *ngIf="previousPageUrl" (click)="previousPage()">previous</button>
+      <button *ngIf="nextPageUrl" (click)="nextPage()">Next Page</button>
+    </div>
+    
+    <app-pokedex-list [pokemonArray]="pokemonArray"
+      (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+    <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
+  </mat-grid-tile>
+</mat-grid-list> -->

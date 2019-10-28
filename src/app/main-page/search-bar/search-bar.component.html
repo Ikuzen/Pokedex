@@ -1,0 +1,13 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Pokemon" aria-label="Pokemon"
+      [matAutocomplete]="auto" [formControl]="pokemonCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let pokemon of filteredPokemons | async"
+        [value]="pokemon.name">
+        <span>{{pokemon.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+</form>

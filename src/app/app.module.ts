@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PokedexListComponent } from './main-page/pokedex-list/pokedex-list.component';
 import { PokemonOverviewComponent } from './main-page/pokemon-overview/pokemon-overview.component'
-import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule, MatTabsModule, MatTabChangeEvent } from '@angular/material';
+import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule, MatTabsModule, MatTabChangeEvent, MatAutocompleteModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SearchBarComponent } from './main-page/search-bar/search-bar.component';
 
 
 
@@ -23,6 +24,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MainPageComponent,
     PokedexListComponent,
     PokemonOverviewComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatTabsModule,
     MatProgressBarModule,
     MatCardModule,
-    ScrollingModule
+    ScrollingModule,
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

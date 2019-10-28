@@ -54,18 +54,31 @@ describe('MainPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should ', () => {
-
+  it('should call getPokemonUrls() on init', () => {
+    spyOn(component, 'getPokemonUrls');
+    component.ngOnInit();
+    expect(component.getPokemonUrls).toHaveBeenCalled();
   });
-  it('should', () => {
 
-  });
-  it('should', () => {
+  // it('should call emitPokemon when input changes', () => {
 
-  });
-  it('should', () => {
+  // });
 
+  it('should call getpokemonUrls() when calling nextPage()', () => {
+    spyOn(component,'getPokemonUrls');
+    component.nextPage();
+    expect(component.getPokemonUrls).toHaveBeenCalled();
   });
+
+  it('should call getpokemonUrls() when calling previousPage()', () => {
+    spyOn(component,'getPokemonUrls');
+    component.previousPage();
+    expect(component.getPokemonUrls).toHaveBeenCalled();
+  });
+
+  // it('should not display previous page if at the first page', () => {
+
+  // });
   // it('should transfer hightlighted pokemon from pokedexlist component to pokemonoverview component', () => {
   //   const mockPokemon = new Pokemon();
   //   mockPokemon.name = 'test';

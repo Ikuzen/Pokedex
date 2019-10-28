@@ -11,9 +11,11 @@ export class MainPageComponent implements OnInit {
   currentPokemon: Pokemon;
   error: any;
   public pokemonArray: object[] = [];
+  private allPokemonArray:object[];
   private pokemonUrlList: string[] = [];
   private nextPageUrl;
   private previousPageUrl;
+  private displaySearchBar:boolean;
 
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
@@ -21,6 +23,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemonUrls();
+    this.getAllPokemonUrls();
 
   }
 
@@ -42,6 +45,13 @@ export class MainPageComponent implements OnInit {
 });
 }
 
+getAllPokemonUrls(){
+  this.pokeApiService.getAllPokemonUrls().subscribe((pokemonRequest:any)=>{
+    this.allPokemonArray = pokemonRequest;
+    console.log(this.allPokemonArray);
+  });
+}
+
 emitPokemon(pokemon: Pokemon) {
     this.currentPokemon = pokemon;
     console.log(this.currentPokemon);
@@ -55,4 +65,10 @@ previousPage() {
   this.pokemonArray.length = 0;
   this.getPokemonUrls(this.previousPageUrl);
 }
+search(){
+  if(!this.displaySearchBar){
+    this.displaySearchBar = true;
+  }
 }
+}
+
