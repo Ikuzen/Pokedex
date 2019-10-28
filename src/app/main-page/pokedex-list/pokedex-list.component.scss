@@ -2,16 +2,7 @@
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
-.wrapper{
-  display: grid;
-  grid-template-areas: "title title title"
-  "pokemon-list . pokemon-overview";
-  grid-template-columns: 40% 5% 55%;
-  width: 90vw;
-  max-height: 100vh;
-  margin: 0 auto;
-  
-  overflow: hidden;
+
     #pokemon-list{
       grid-area: pokemon-list;
     
@@ -21,6 +12,7 @@
     }
     mat-grid-list{
       max-height: 75vh;
+      min-width: 200px;
       overflow: auto;
       scrollbar-width: 0px;
       background-color: black;
@@ -59,8 +51,7 @@
         }
       }
     }
-    
-}
+
 
 .example-viewport {
   height: 500px;
@@ -72,6 +63,3 @@
   height: 200px;
 }
 
-h1{
-  grid-area: title;
-}

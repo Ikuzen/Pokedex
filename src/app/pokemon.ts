@@ -1,7 +1,7 @@
 export class Pokemon {
   id: number;
   name: string;
-  types: string[];
+  types: any[];
   species: string;
   height: number;
   weight: number;

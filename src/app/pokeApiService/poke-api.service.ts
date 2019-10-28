@@ -8,42 +8,38 @@ import { Pokemon } from '../pokemon';
 })
 export class PokeApiService {
   // tslint:disable-next-line:max-line-length
-  pokemonSampleList: string[] = ['charmander', 'charmeleon', 'charizard', 'bulbasaur', 'ivysaur', 'venusaur', 'squirtle', 'wartortle', 'blastoise', 'pikachu'];
   public pokemonArray: object[] = [];
-  private baseURL = 'https://pokeapi.co/api/v2/pokemon/';
-  newURL: string = this.baseURL;
-  loading: boolean;
-  error: any;
+  public baseURL = 'https://pokeapi.co/api/v2/pokemon?limit=20';
+
 
   constructor(private http: HttpClient) {
   }
 
-
-  fetchPokemon(pokemon){
-    console.log('fetching pokemon');
-    return this.http.get('https://pokeapi.co/api/v2/pokemon/' + pokemon)
+  getPokemonUrls(url = this.baseURL) {
+    console.log('fetching pokemons');
+    return this.http.get(url)
     .pipe(
-      finalize(() => { // callback at the end always
-        this.loading = false;
+      finalize(() => {
       })
-    )
-    .subscribe(
-      (data) => { // .get returns an observable
-      console.log(data); // first callback : success
-      this.pokemonArray.push(data);
-      this.loading = false;
-    }, (error) => {
-      console.log(error);
-      this.error = error.statusText;
-      this.loading = false;
-    });
+    );
   }
-  
 
-  // search(url:string){
-  //   // console.log(url)
-  //   this.http.get(url).subscribe((data) => {
-  //     this.allData = data;
-  //     console.log(this.allData);
-  // })}
+
+
+  getPokemon(pokemonURL) {
+    console.log('fetching pokemon');
+    return this.http.get(pokemonURL)
+    .pipe(
+      finalize(() => {
+      })
+    );
+  }
+
+  getAllPokemonUrls(url = 'https://pokeapi.co/api/v2/pokemon?limit=964'){
+    return this.http.get(url)
+    .pipe(
+      finalize(() => {
+      })
+    );
+  }
 }
