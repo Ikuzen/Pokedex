@@ -1,8 +1,11 @@
 <div class="wrapper">
-    <h1>POKEDEX</h1>
-    <mat-grid-list class="pokemon-list"  [cols]="breakpoint" rowHeight="150px" gutterSize="20px"
-      (window:resize)="onResize($event)">
-      <div *ngIf="pokeApiService.pokemonArray">
+  <h1>POKEDEX</h1>
+
+  <mat-grid-list class="pokemon-list" [cols]="breakpoint" rowHeight="150px"
+    gutterSize="20px"
+    (window:resize)="onResize($event)">
+    <div *ngIf="pokeApiService.pokemonArray.length >=
+      pokeApiService.pokemonSampleList.length">
         <mat-grid-tile class="pokemon-card"
           *ngFor="let pokemon of
           pokeApiService.pokemonArray"
@@ -20,8 +23,8 @@
             alt="pokemon_sprite">
 
         </mat-grid-tile>
-      </div>
-    </mat-grid-list>
+    </div>
+  </mat-grid-list>
 
   <app-pokemon-overview [pokemon]="highlightedPokemon"></app-pokemon-overview>
 </div>

@@ -1,9 +1,14 @@
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 .wrapper{
   display: grid;
   grid-template-areas: "title title title"
   "pokemon-list . pokemon-overview";
   grid-template-columns: 40% 5% 55%;
   width: 90vw;
+  max-height: 100vh;
   margin: 0 auto;
   
   overflow: hidden;
@@ -14,40 +19,59 @@
     app-pokemon-overview{
       grid-area: pokemon-overview;
     }
+    mat-grid-list{
+      max-height: 75vh;
+      overflow: auto;
+      scrollbar-width: 0px;
+      background-color: black;
+      ::webkit-scrollbar { display: none; }
+      border: 2mm ridge rgba(12, 181, 233, 0.6);
+      .pokemon-card{
+        display: grid;
+        grid-template-areas: "list-infos list-image";
+        grid-template-columns: "auto auto";
+        background-color: red;
+        min-width: 150px;
+        max-width: 150px;
+        height: 150px;
+        width: 150px;
+        border-radius: 25px;
+        border: 2mm ridge rgba(31, 46, 177, 0.6);
+      
+         &:hover {
+          background-color: darkred !important; 
+          background-image: (-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),-webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%))!important   
+        }
+        .list-element-type{
+          border-radius: 25px;
+          background-color: darksalmon;
+          margin: 1fr;
+        }
+        .list-infos{
+          display: block;
+          margin-left: 34px;
+          grid-area: list-infos;
+          font-size:100%;
+          text-align: center;
+        }
+        .list-image{
+          grid-area: list-image;
+        }
+      }
+    }
+    
 }
 
+.example-viewport {
+  height: 500px;
+  width: 40vw;
+  margin-bottom: 50px;
+  border: 1px solid black;
+}
+.example-item{
+  height: 200px;
+}
 
 h1{
   grid-area: title;
-}
-
-.pokemon-card{
-  display: grid;
-  grid-template-areas: "list-infos list-image";
-  grid-template-columns: "auto auto";
-  background-color: red;
-  min-width: 150px;
-  max-width: 200px;
-  border-radius: 25px;
-  border: 2mm ridge rgba(31, 46, 177, 0.6);
-
-   &:hover {
-    background-color: darkred !important; 
-    background-image: (-webkit-radial-gradient(  50%   0%,  8% 50%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(  50% 100%, 12% 50%, hsla(0,0%,100%,.6) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient(   0%  50%, 50%  7%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-radial-gradient( 100%  50%, 50%  5%, hsla(0,0%,100%,.5) 0%, hsla(0,0%,100%,0) 100%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   3%, hsla(0,0%,  0%,.1) 3.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%,.1) 7.5%),-webkit-repeating-radial-gradient( 50% 50%, 100% 100%, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.2) 2.2%),-webkit-radial-gradient( 50% 50%, 200% 50%, hsla(0,0%,90%,1) 5%, hsla(0,0%,85%,1) 30%, hsla(0,0%,60%,1) 100%))!important   
-  }
-  .list-element-type{
-    border-radius: 25px;
-    background-color: darksalmon;
-    margin: 1fr;
-  }
-  .list-infos{
-    display: block;
-    margin-left: 34px;
-    grid-area: list-infos;
-    font-size:100%;
-    text-align: center;
-  }
-  .list-image{
-    grid-area: list-image;
-  }
 }
