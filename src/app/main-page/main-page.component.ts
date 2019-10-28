@@ -54,7 +54,7 @@ getAllPokemonUrls(){
 
 emitPokemon(pokemon: Pokemon) {
     this.currentPokemon = pokemon;
-    console.log(this.currentPokemon);
+    console.log(this.currentPokemon.name);
 }
 
 nextPage() {
