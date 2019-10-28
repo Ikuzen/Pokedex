@@ -65,9 +65,12 @@ previousPage() {
   this.pokemonArray.length = 0;
   this.getPokemonUrls(this.previousPageUrl);
 }
-search(){
+searchBarToggler(){
   if(!this.displaySearchBar){
     this.displaySearchBar = true;
+  }
+  else{
+    this.displaySearchBar = false;
   }
 }
 }

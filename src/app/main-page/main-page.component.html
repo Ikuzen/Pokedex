@@ -8,7 +8,7 @@
       <button mat-flat-button color="primary" *ngIf="nextPageUrl"
         (click)="nextPage()">Next Page</button>
       <button mat-mini-fab style="align-self: flex-end;" color="primary"
-        (click)="search()">search</button>
+        (click)="searchBarToggler()">search</button>
       <app-search-bar *ngIf="displaySearchBar" [allPokemonArray]="allPokemonArray" [currentPokemon]="currentPokemon" (submitPokemon)="emitPokemon($event)"></app-search-bar>
     </div>
 
