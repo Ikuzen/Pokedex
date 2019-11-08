@@ -23,16 +23,18 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    .name{
+      font-family: fantasy;
+      color:#F9F9F9
+    }
     .element-type{
       display: flex;
       flex-direction: column;
-      background-color: darkorchid;
       border-radius: 20px;
       border: solid 2px gray;
-      color: white !important;
-      // flex-basis: 50%;
-      width: 50%;
-      
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;      width: 50%;
+      color:#F9F9F9;
+
     }
   }
   .top-container-2{

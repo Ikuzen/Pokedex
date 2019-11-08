@@ -10,9 +10,9 @@
       (click)="highlightPokemon(pokemon)"
       [style.background-color]="typeColor(pokemon)">
       <div class="list-infos">
-        {{pokemon.name}}
+        <p style="font-family:fantasy">{{pokemon.name | uppercase}}</p>
         <div *ngFor="let type of pokemon.types">
-          <span class="list-element-type">{{type.type.name}}</span>
+          <span [style.background-color]="utilService.lightenDarkenColor(typeColorConverter(type.type.name),40)" class="list-element-type">{{type.type.name}}</span>
         </div>
       </div>
       <img class="list-image" [src]="pokemon.sprites.front_default"

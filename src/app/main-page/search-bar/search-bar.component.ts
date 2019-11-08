@@ -12,12 +12,12 @@ import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 })
 export class SearchBarComponent implements OnInit {
 
-  @Input() allPokemonArray: object;
+  @Input() allPokemonArray: any;
   @Input() currentPokemon: Pokemon;
   @Output() submitPokemon = new EventEmitter<Pokemon>();
   pokemonCtrl = new FormControl();
   filteredPokemons: Observable<object[]>;
-  searchField: Element;
+  searchField: any;
   pokemonUrl: string;
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
       map(pokemon => pokemon ? this._filterPokemons(pokemon) : this.allPokemonArray.results.slice())
       );
     }
-   private _filterPokemons(value: string): object[] {
+   private _filterPokemons(value: string): any[] {
     const filterValue = value.toLowerCase();
 
     return this.allPokemonArray.results.filter(pokemon => pokemon.name.toLowerCase().indexOf(filterValue) === 0);
@@ -41,7 +41,7 @@ export class SearchBarComponent implements OnInit {
     this.searchField = document.getElementById('searchField');
     if(this.searchField.value){
       this.pokeApiService.getPokemon('https://pokeapi.co/api/v2/pokemon/' + this.searchField.value)
-      .subscribe((pokemonObject: object) => {
+      .subscribe((pokemonObject: any) => {
           this.currentPokemon = pokemonObject;
           this.submitPokemon.emit(this.currentPokemon);
           console.log(this.currentPokemon);

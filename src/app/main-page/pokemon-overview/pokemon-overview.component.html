@@ -4,7 +4,7 @@
     <div class="top-container-1">
       <mat-card-title class="name">&nbsp;{{pokemon.name | uppercase}}</mat-card-title>
       <mat-card-subtitle class="all-types">
-        <span *ngFor="let type of pokemon.types" class="element-type">&nbsp;{{type.type.name}}&nbsp;</span>
+        <span [style.background-color]="utilService.lightenDarkenColor(typeColorConverter(type.type.name),40)" *ngFor="let type of pokemon.types" class="element-type">&nbsp;{{type.type.name}}&nbsp;</span>
       </mat-card-subtitle>
     </div>
     <div class="top-container-2">

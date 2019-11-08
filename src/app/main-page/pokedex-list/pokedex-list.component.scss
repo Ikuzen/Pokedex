@@ -22,7 +22,6 @@
         display: grid;
         grid-template-areas: "list-infos list-image";
         grid-template-columns: "auto auto";
-        background-color: red;
         min-width: 150px;
         max-width: 150px;
         height: 150px;
@@ -36,8 +35,10 @@
         }
         .list-element-type{
           border-radius: 25px;
-          background-color: darksalmon;
+          opacity: 1;
           margin: 1fr;
+          text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
         }
         .list-infos{
           display: block;
@@ -45,6 +46,8 @@
           grid-area: list-infos;
           font-size:100%;
           text-align: center;
+          color:#F9F9F9;
+          
         }
         .list-image{
           grid-area: list-image;

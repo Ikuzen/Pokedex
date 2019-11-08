@@ -1,7 +1,10 @@
 <ng-form class="example-form" (submit)="submit()">
   <mat-form-field class="example-full-width">
-    <input id="searchField" matInput placeholder="Pokemon" aria-label="Pokemon"
+    <div class="input-group">
+      <input id="searchField" matInput placeholder="Pokemon" aria-label="Pokemon"
       [matAutocomplete]="auto" [formControl]="pokemonCtrl">
+      <fa class="search-icon" name="search" (click)="submit(searchField)"></fa>
+    </div>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let pokemon of filteredPokemons | async"
         [value]="pokemon.name">
@@ -9,5 +12,4 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button type="submit" (click)="submit(searchField)">search</button>
 </ng-form>
