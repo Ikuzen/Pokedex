@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Pokemon } from 'src/app/pokemon';
 import { MatTabChangeEvent } from '@angular/material';
 import { UtilService } from 'src/app/util.service';
+import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 
 @Component({
   selector: 'app-pokemon-overview',
@@ -12,8 +13,11 @@ import { UtilService } from 'src/app/util.service';
 })
 export class PokemonOverviewComponent implements OnInit {
   @Input () pokemon: Pokemon;
-  constructor(public utilService:UtilService) {
+  isEditing:boolean = false;
+
+  constructor(public utilService:UtilService, public pokeApiService:PokeApiService) {
     this.utilService = utilService;
+    this.pokeApiService = pokeApiService;
    }
 
   // ngOnChanges(){
@@ -22,10 +26,25 @@ export class PokemonOverviewComponent implements OnInit {
 
   ngOnInit() {
   }
+  edit(pokemon: Pokemon): void {
+    this.isEditing = true;
+  }
+
+  cancel(): void {
+    this.isEditing = false;
+  }
+
+  save(): void {
+    this.pokemon.name = editPokemonName.value;
+    this.isEditing = false;
+    this.pokeApiService.updatePokemon(this.pokemon).subscribe();
+    console.log(this.pokemon);
+
+  }
 
   typeColor(pokemon): string {
-    for (const type of pokemon.types) {
-      switch (type.type.name) {
+    for (const type of pokemon.types.types) {
+      switch (type) {
         case 'grass':
           return '#48d0b0';
         case 'poison':
@@ -68,11 +87,6 @@ export class PokemonOverviewComponent implements OnInit {
       default:
         return '#aaa9ad';
     }
-  }
-
-  totalStats(pokemon): number {
-    // tslint:disable-next-line:max-line-length
-    return  (pokemon.stats[0].base_stat + pokemon.stats[1].base_stat + pokemon.stats[2].base_stat + pokemon.stats[3].base_stat + pokemon.stats[4].base_stat + pokemon.stats[5].base_stat) / 6;
   }
 
   barColor(stat: number): string {

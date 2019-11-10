@@ -25,7 +25,8 @@
     flex-wrap: wrap;
     .name{
       font-family: fantasy;
-      color:#F9F9F9
+      color:#F9F9F9;
+      display:flex;
     }
     .element-type{
       display: flex;

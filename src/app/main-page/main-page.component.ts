@@ -10,68 +10,40 @@ import { PokeApiService } from '../pokeApiService/poke-api.service';
 export class MainPageComponent implements OnInit {
   currentPokemon: Pokemon;
   error: any;
-  public pokemonArray: object[] = [];
-  private allPokemonArray:object[];
-  private pokemonUrlList: string[] = [];
-  private nextPageUrl;
-  private previousPageUrl;
-  private displaySearchBar:boolean;
+  private allPokemonArray: Pokemon[];
 
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
+    this.getAllPokemons();
   }
 
   ngOnInit() {
-    this.getPokemonUrls();
-    this.getAllPokemonUrls();
-
   }
 
-  getPokemonUrls(url = this.pokeApiService.baseURL) {
-    this.pokeApiService.getPokemonUrls(url).subscribe((pokemonRequest: any) => {
-      this.nextPageUrl = pokemonRequest.next;
-      this.previousPageUrl = pokemonRequest.previous;
-      this.pokemonUrlList = pokemonRequest.results.map(x => x.url);
-      this.pokemonUrlList.forEach((pokemonUrl: any) => {
-        this.pokeApiService.getPokemon(pokemonUrl).subscribe((pokemonObject: object) => {
-          this.pokemonArray.push(pokemonObject);
+  getAllPokemons(url = this.pokeApiService.baseURL) {
+    this.pokeApiService.getAllPokemons(url).subscribe((pokemonRequest: any) => {
+      this.allPokemonArray = pokemonRequest;
+      console.log(this.allPokemonArray);
 
 
     }, (error) => {
       console.log(error);
       this.error = error.statusText;
     });
-  });
-});
-}
-
-getAllPokemonUrls(){
-  this.pokeApiService.getAllPokemonUrls().subscribe((pokemonRequest:any)=>{
-    this.allPokemonArray = pokemonRequest;
-    console.log(this.allPokemonArray);
-  });
-}
+  }
 
 emitPokemon(pokemon: Pokemon) {
     this.currentPokemon = pokemon;
     console.log(this.currentPokemon.name);
 }
 
-nextPage() {
-  this.pokemonArray.length = 0;
-  this.getPokemonUrls(this.nextPageUrl);
-}
-previousPage() {
-  this.pokemonArray.length = 0;
-  this.getPokemonUrls(this.previousPageUrl);
-}
-searchBarToggler(){
-  if(!this.displaySearchBar){
-    this.displaySearchBar = true;
-  }
-  else{
-    this.displaySearchBar = false;
-  }
-}
+// nextPage() {
+//   this.pokemonArray.length = 0;
+//   this.getPokemonUrls(this.nextPageUrl);
+// }
+// previousPage() {
+//   this.pokemonArray.length = 0;
+//   this.getPokemonUrls(this.previousPageUrl);
+// }
 }
 

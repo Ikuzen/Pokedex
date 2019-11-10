@@ -29,7 +29,7 @@ export class SearchBarComponent implements OnInit {
     this.filteredPokemons = this.pokemonCtrl.valueChanges
     .pipe(
       startWith(''),
-      map(pokemon => pokemon ? this._filterPokemons(pokemon) : this.allPokemonArray.results.slice())
+      map(pokemon => pokemon ? this._filterPokemons(pokemon) : this.allPokemonArray.slice())
       );
     }
    private _filterPokemons(value: string): any[] {
@@ -40,7 +40,7 @@ export class SearchBarComponent implements OnInit {
   submit() {
     this.searchField = document.getElementById('searchField');
     if(this.searchField.value){
-      this.pokeApiService.getPokemon('https://pokeapi.co/api/v2/pokemon/' + this.searchField.value)
+      this.pokeApiService.getPokemon(this.pokeApiService.baseURL + '/pokemon/name/' + this.searchField.value)
       .subscribe((pokemonObject: any) => {
           this.currentPokemon = pokemonObject;
           this.submitPokemon.emit(this.currentPokemon);

@@ -3,13 +3,9 @@
   <div class="top" >
       <h1 class="title">POKEDEX</h1>
       <app-search-bar class="search-bar" *ngIf="allPokemonArray" [allPokemonArray]="allPokemonArray" [currentPokemon]="currentPokemon" (submitPokemon)="emitPokemon($event)"></app-search-bar>
-      <button mat-flat-button class="previous-page" color="accent" *ngIf="previousPageUrl"
-        (click)="previousPage()">Previous</button>
-      <button mat-flat-button class="next-page" color="primary" *ngIf="nextPageUrl"
-        (click)="nextPage()">Next Page</button>
 
   </div>
-  <app-pokedex-list [pokemonArray]="pokemonArray"
+  <app-pokedex-list [pokemonArray]="allPokemonArray"
     (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
   <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
 </div>

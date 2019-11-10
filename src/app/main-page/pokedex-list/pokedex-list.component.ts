@@ -9,7 +9,7 @@ import { UtilService } from 'src/app/util.service';
   styleUrls: ['./pokedex-list.component.scss'],
 })
 export class PokedexListComponent implements OnInit {
-  @Input() pokemonArray: object[] = [];
+  @Input() pokemonArray: Pokemon[] = [];
   @Output() highlightedPokemon = new EventEmitter<Pokemon>();
   breakpoint: number;
 
@@ -27,12 +27,12 @@ export class PokedexListComponent implements OnInit {
 
   highlightPokemon(pokemon) {
     this.highlightedPokemon.emit(pokemon);
-    console.log(this.highlightedPokemon);
+    console.log(pokemon);
   }
 
   typeColor(pokemon): string {
-    for (const type of pokemon.types) {
-      switch (type.type.name) {
+    for (const type of pokemon.types.types) {
+      switch (type) {
         case 'grass':
           return '#48d0b0';
         case 'poison':
