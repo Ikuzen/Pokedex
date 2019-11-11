@@ -1,0 +1,91 @@
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.pokemon-card-2{
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+}
+.top-infos{
+  border: 2mm ridge rgba(195, 199, 121, 0.837);
+  display: flex;
+  flex-direction: row;
+  border-top-left-radius:25px;
+  border-top-right-radius:25px;
+  .top-container-1{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .name{
+      font-family: fantasy;
+      color:#F9F9F9;
+      display:flex;
+    }
+    .element-type{
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      border: solid 2px gray;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;      width: 50%;
+      color:#F9F9F9;
+
+    }
+  }
+  .top-container-2{
+    // flex-basis: 50%;
+    width: 50%;
+    justify-items: flex-end;
+
+  }
+}
+
+.pokemon-info-tab{
+  border: 2mm ridge rgba(195, 199, 121, 0.837);
+  border-bottom-left-radius: 30px ;
+  border-bottom-right-radius: 30px ;
+
+  background-color: x0F9F9F9;
+  .about{}
+  .base-stats{
+    .hp.attack.defense.sp-atk.sp-def.evolutions.moves{
+      // display: flex;
+      // flex-direction: row ;
+    }
+  }
+  .evolution{}
+  .moves{}
+
+}
+
+.pokemon-image{
+  
+}
+
+
+
+//restyling
+.mat-tab-label { 
+  min-width: 72px !important;
+  padding: 5px;
+  @media (max-width: 600px){
+    min-width: 25px
+  }
+
+}
+.mat-tab-body-content{
+  margin-left: 20px;
+}
+.mat-tab-group{
+  background-color: silver!important;
+  border-bottom-left-radius: 25px!important;
+  border-bottom-right-radius: 25px!important;
+
+}
+

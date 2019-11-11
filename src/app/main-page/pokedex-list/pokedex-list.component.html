@@ -1,0 +1,24 @@
+<mat-grid-list class="pokemon-list" [cols]="breakpoint" rowHeight="150px"
+  gutterSize="20px"
+  (window:resize)="onResize($event)">
+  <div *ngIf="pokemonArray">
+    <mat-grid-tile class="pokemon-card"
+      *ngFor="let pokemon of
+      pokemonArray"
+      colspan="1"
+      rowspan="1"
+      (click)="highlightPokemon(pokemon)"
+      [style.background-color]="typeColor(pokemon)">
+      <div class="list-infos">
+        <p style="font-family:fantasy">{{pokemon.name | uppercase}}</p>
+        <div *ngFor="let type of pokemon.types.types">
+          <span [style.background-color]="utilService.lightenDarkenColor(typeColorConverter(type),40)" class="list-element-type">{{type}}</span>
+        </div>
+      </div>
+      <img class="list-image" [src]="pokemon.images.smallImage"
+        alt="pokemon_sprite">
+
+    </mat-grid-tile>
+  </div>
+
+</mat-grid-list>

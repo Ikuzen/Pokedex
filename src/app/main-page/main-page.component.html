@@ -1,0 +1,36 @@
+
+<div class="wrapper">
+  <div class="top" >
+      <h1 class="title">POKEDEX</h1>
+      <app-search-bar class="search-bar" *ngIf="allPokemonArray" [allPokemonArray]="allPokemonArray" [currentPokemon]="currentPokemon" (submitPokemon)="emitPokemon($event)"></app-search-bar>
+
+  </div>
+  <app-pokedex-list [pokemonArray]="allPokemonArray"
+    (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+  <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
+</div>
+
+
+
+<!-- 
+<mat-grid-list cols="2" rowHeight="70vh" class="wrapper">
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+    <div>
+      <h1>POKEDEX</h1>
+      <button *ngIf="previousPageUrl" (click)="previousPage()">previous</button>
+      <button *ngIf="nextPageUrl" (click)="nextPage()">Next Page</button>
+    </div>
+    
+    <app-pokedex-list [pokemonArray]="pokemonArray"
+      (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+    <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
+  </mat-grid-tile>
+</mat-grid-list> -->
