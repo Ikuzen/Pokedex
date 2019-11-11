@@ -5,7 +5,7 @@
       <mat-card-title class="name"> 
           <fa class="edit-icon" name="edit" (click)="edit(pokemon)"></fa>
           <div *ngIf="isEditing">
-            <input id="editPokemonName" [value]="pokemon.name" placeholder="name"/>
+            <input #editPokemonName [value]="pokemon.name" placeholder="name"/>
             <button (click)="save()">save</button>
             <button (click)="cancel()">cancel</button>
           </div>

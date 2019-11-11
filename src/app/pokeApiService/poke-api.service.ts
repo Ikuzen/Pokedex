@@ -52,9 +52,9 @@ export class PokeApiService {
   updatePokemon(pokemon){
     console.log('updating pokemon');
     return this.http.put<Pokemon>(this.baseURL + '/pokemon', pokemon, this.httpOptions)
-    .pipe(
-      catchError(this.handleError('updatePokemon', pokemon))
-    );
+    // .pipe(
+    //   catchError(this.handleError('updatePokemon', pokemon))
+    // );
   }
 
 

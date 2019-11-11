@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { Pokemon } from 'src/app/pokemon';
 import { MatTabChangeEvent } from '@angular/material';
 import { UtilService } from 'src/app/util.service';
@@ -14,6 +14,7 @@ import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 export class PokemonOverviewComponent implements OnInit {
   @Input () pokemon: Pokemon;
   isEditing:boolean = false;
+  @ViewChild('editPokemonName', {static: true }) inputPokemonName: ElementRef<HTMLInputElement>;
 
   constructor(public utilService:UtilService, public pokeApiService:PokeApiService) {
     this.utilService = utilService;
@@ -35,7 +36,7 @@ export class PokemonOverviewComponent implements OnInit {
   }
 
   save(): void {
-    this.pokemon.name = editPokemonName.value;
+    this.pokemon.name = this.inputPokemonName.nativeElement.value;
     this.isEditing = false;
     this.pokeApiService.updatePokemon(this.pokemon).subscribe();
     console.log(this.pokemon);
