@@ -13,10 +13,10 @@ import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 })
 export class PokemonOverviewComponent implements OnInit {
   @Input () pokemon: Pokemon;
-  isEditing:boolean = false;
-  @ViewChild('editPokemonName', {static: true }) inputPokemonName: ElementRef<HTMLInputElement>;
+  isEditing = false;
+  @ViewChild('editPokemonName', {static: false }) inputPokemonName: ElementRef<HTMLInputElement>;
 
-  constructor(public utilService:UtilService, public pokeApiService:PokeApiService) {
+  constructor(public utilService: UtilService, public pokeApiService: PokeApiService) {
     this.utilService = utilService;
     this.pokeApiService = pokeApiService;
    }
@@ -67,7 +67,7 @@ export class PokemonOverviewComponent implements OnInit {
     return 'aaa9ad';
   }
 
-  typeColorConverter(color:string){
+  typeColorConverter(color: string) {
     switch (color) {
       case 'grass':
         return '#48d0b0';
@@ -94,15 +94,15 @@ export class PokemonOverviewComponent implements OnInit {
     return stat > 50 ? 'primary' : 'warn';
   }
 
-  resetSelectedIndex(){
+  resetSelectedIndex() {
     return 0;
   }
 
-  onTabChange(event:MatTabChangeEvent){
-    console.log("test")
-    if(event.index !== 0){
+  onTabChange(event: MatTabChangeEvent) {
+    console.log('test');
+    if (event.index !== 0) {
       event.index = 0;
-      console.log("reussi")
+      console.log('reussi');
   }
 }
 }
