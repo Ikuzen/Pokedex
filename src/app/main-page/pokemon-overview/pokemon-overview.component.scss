@@ -26,6 +26,20 @@ mat-card-header{
         color:#F9F9F9;
         display:flex;
       }
+      .edit-icon{
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      .button-group{
+        display: inline;
+        button{
+          opacity: 0.9 ;
+          &:hover{
+            opacity: 1;
+          }
+        }
+      }
       .element-type{
         display: flex;
         flex-direction: row;

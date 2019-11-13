@@ -11,6 +11,7 @@ import { UtilService } from 'src/app/util.service';
 export class PokedexListComponent implements OnInit {
   @Input() pokemonArray: Pokemon[] = [];
   @Output() highlightedPokemon = new EventEmitter<Pokemon>();
+  currentPokemon: Pokemon;
   breakpoint: number;
   isSmallScreen: boolean;
   constructor(public utilService: UtilService) {
@@ -18,9 +19,9 @@ export class PokedexListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (window.innerWidth < 500) {
+    if (window.innerWidth < 600) {
       this.breakpoint = 2;
-    } else if (window.innerWidth < 650) {
+    } else if (window.innerWidth < 700) {
       this.breakpoint = 3;
     } else if (window.innerWidth < 800) {
       this.breakpoint = 4;
@@ -35,9 +36,9 @@ export class PokedexListComponent implements OnInit {
   }
 
   onResize(event) {
-    if (window.innerWidth < 500) {
+    if (window.innerWidth < 600) {
       this.breakpoint = 2;
-    } else if (window.innerWidth < 650) {
+    } else if (window.innerWidth < 700) {
       this.breakpoint = 3;
     } else if (window.innerWidth < 800) {
       this.breakpoint = 4;
@@ -54,7 +55,15 @@ export class PokedexListComponent implements OnInit {
 
   highlightPokemon(pokemon) {
     this.highlightedPokemon.emit(pokemon);
+    this.currentPokemon = pokemon;
     console.log(pokemon);
+  }
+  ifHighlighted(pokemon){
+    if (pokemon === this.currentPokemon){
+      return 'black 3px double';
+    } else {
+      return 'none';
+    }
   }
 
   typeColor(pokemon): string {

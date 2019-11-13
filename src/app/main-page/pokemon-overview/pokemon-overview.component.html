@@ -7,8 +7,10 @@
             <fa class="edit-icon" name="edit" (click)="edit(pokemon)"></fa>
             <div *ngIf="isEditing">
               <input #editPokemonName [value]="pokemon.name" placeholder="name"/>
-              <button (click)="save()">save</button>
-              <button (click)="cancel()">cancel</button>
+              <div class="button-group">
+                <button mat-raised-button color="primary" (click)="save()"> save</button>
+                <button mat-raised-button color="warn" (click)="cancel()">cancel</button>
+              </div>
             </div>
             <div *ngIf="!isEditing">
               {{pokemon.name | uppercase}}

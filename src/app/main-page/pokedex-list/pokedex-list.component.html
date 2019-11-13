@@ -9,7 +9,8 @@
       colspan="1"
       rowspan="1"
       (click)="highlightPokemon(pokemon)"
-      [style.background-color]="typeColor(pokemon)">
+      [style.background-color]="typeColor(pokemon)"
+      [style.border]="ifHighlighted(pokemon)">
       <div class="list-infos">
         <p style="font-family:fantasy">{{pokemon.name | uppercase}}</p>
         <div *ngFor="let type of pokemon.types.types">
