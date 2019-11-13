@@ -14,10 +14,10 @@ export class MainPageComponent implements OnInit {
   isSmallScreen: boolean;
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
-    this.getAllPokemons();
   }
 
   ngOnInit() {
+    this.getAllPokemons();
     this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
   }
 

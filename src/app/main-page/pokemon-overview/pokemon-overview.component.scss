@@ -106,13 +106,35 @@ mat-card-content{
   .pokemon-info-tab{
     border-bottom-left-radius: 30px ;
     border-bottom-right-radius: 30px ;
-  
-    .about{}
-    .base-stats{
-      .hp.attack.defense.sp-atk.sp-def.evolutions.moves{
-        // display: flex;
-        // flex-direction: row ;
+    .info-content{
+      .info-line{
+        display: flex;
+        .info-name{
+          min-width: 100px;
+          font-family: monospace;
+          color: rgb(167,170,174)
+        }
+        .info-value{
+          min-width: 30px;
+        }
       }
+    }
+    .hp,.attack,.defense,.sp-atk,.sp-def,.speed,.total{
+      display: flex !important;
+      align-items: center !important;
+      .stat-name{
+        min-width: 70px;
+
+      }
+      .stat-value{
+        min-width: 30px
+      }
+
+    }
+    
+    .base-stats{
+      display: flex !important;
+
     }
     .evolution{}
     .moves{}

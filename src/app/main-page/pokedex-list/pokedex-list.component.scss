@@ -17,6 +17,7 @@
       scrollbar-width: 0px;
       ::webkit-scrollbar { display: none; }
       border: 2mm ridge rgba(12, 181, 233, 0.6);
+      border-radius: 15px;
       .pokemon-card{
         display: grid;
         grid-template-areas: "list-infos list-image";

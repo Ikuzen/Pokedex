@@ -41,39 +41,42 @@
     <mat-tab-group class="pokemon-info-tab" (selectedTabChange)="onTabChange($event)">
       <mat-tab class="about" label="About" min-width="100px">
         <ng-template matTabContent>
-          <p>Species : {{pokemon.name}}</p>
-          <p>Height : {{pokemon.height}}m</p>
-          <p>Weight : {{pokemon.weight}}kg</p>
-          <p>Abilities : {{pokemon.abilities.abilities[0]}},
-            {{pokemon.abilities.abilities[1]}}</p>
-
-          <h2 style="font-size: 100%;">Breeding</h2>
-          <p>Gender : blabla</p>
-          <p>Egg groups : blabla</p>
-          <p>Egg cycle :blabla </p>
+          <div class="info-content">
+            <div class="info-line"><span class="info-name">Species :</span> <span class="info-value">{{pokemon.name}}</span><br /><br /></div>
+            <div class="info-line"><span class="info-name">Height :</span> <span class="info-value">{{pokemon.height}}m</span><br /><br /></div>
+            <div class="info-line"><span class="info-name">Weight :</span> <span class="info-value">{{pokemon.weight}}kg</span><br /><br /></div>
+            <div class="info-line"> <span class="info-name">Abilities :</span> <span class="info-value">{{pokemon.abilities.abilities[0]}},
+              {{pokemon.abilities.abilities[1]}}</span><br /><br /></div>
+           
+  
+            <h2 style="font-size: 100%"> Breeding</h2><br />
+            <div class="info-line"><span class="info-name">Gender :</span> blabla<br /><br /></div>
+            <div class="info-line"><span class="info-name">Egg groups :</span> blabla<br /><br /></div>
+            <div class="info-line"><span class="info-name">Egg cycle :</span> blabla <br /><br /></div>
+          </div>
         </ng-template>
       </mat-tab>
       <mat-tab class="base-stats" label="Base Stats">
         <ng-template matTabContent>
-          <div class="hp"><p>HP</p><mat-progress-bar
+          <div class="hp"><p class="stat-name">HP</p> <p class="stat-value">{{pokemon.stats.hp}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.hp)"
               [value]="pokemon.stats.hp"></mat-progress-bar></div>
-          <div class="attack"><p>Attack</p><mat-progress-bar
+          <div class="attack"><p class="stat-name">Attack</p><p class="stat-value">{{pokemon.stats.atk}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.atk)"
               [value]="pokemon.stats.atk"></mat-progress-bar></div>
-          <div class="defense"><p>Defense</p> <mat-progress-bar
+          <div class="defense"><p class="stat-name">Defense</p><p class="stat-value">{{pokemon.stats.def}}</p> <mat-progress-bar
               [color]="barColor(pokemon.stats.def)"
               [value]="pokemon.stats.def"></mat-progress-bar> </div>
-          <div class="sp-atk"><p>Sp.Atk</p><mat-progress-bar
+          <div class="sp-atk"><p class="stat-name">Sp.Atk</p><p class="stat-value">{{pokemon.stats.spAtk}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.spAtk)"
               [value]="pokemon.stats.spAtk"></mat-progress-bar> </div>
-          <div class="sp-def"><p>Sp.Def</p><mat-progress-bar
+          <div class="sp-def"><p class="stat-name">Sp.Def</p><p class="stat-value">{{pokemon.stats.spDef}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.spDef)"
               [value]="pokemon.stats.spDef"></mat-progress-bar> </div>
-          <div class="speed"><p>Speed</p><mat-progress-bar
+          <div class="speed"><p class="stat-name">Speed</p><p class="stat-value">{{pokemon.stats.speed}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.speed)"
               [value]="pokemon.stats.speed"></mat-progress-bar> </div>
-          <div class="total"><p>Total</p><mat-progress-bar
+          <div class="total"><p class="stat-name">Total</p><p class="stat-value">{{pokemon.stats.total}}</p><mat-progress-bar
               [color]="barColor(pokemon.stats.total/6)" [value]="pokemon.stats.total/6"></mat-progress-bar>
           </div>
           <p>&nbsp;</p>
