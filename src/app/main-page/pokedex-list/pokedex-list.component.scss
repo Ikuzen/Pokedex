@@ -15,7 +15,6 @@
       min-width: 200px;
       overflow: auto;
       scrollbar-width: 0px;
-      background-color: black;
       ::webkit-scrollbar { display: none; }
       border: 2mm ridge rgba(12, 181, 233, 0.6);
       .pokemon-card{
@@ -27,7 +26,6 @@
         height: 150px;
         width: 150px;
         border-radius: 25px;
-        border: 2mm ridge rgba(31, 46, 177, 0.6);
       
          &:hover {
           background-color: darkred !important; 

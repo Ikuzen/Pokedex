@@ -1,28 +1,36 @@
 <mat-card *ngIf="pokemon" class="pokemon-card-2">
   <mat-card-header class="top-infos"
     [style.background-color]="typeColor(pokemon)">
-    <div class="top-container-1">
-      <mat-card-title class="name"> 
-          <fa class="edit-icon" name="edit" (click)="edit(pokemon)"></fa>
-          <div *ngIf="isEditing">
-            <input #editPokemonName [value]="pokemon.name" placeholder="name"/>
-            <button (click)="save()">save</button>
-            <button (click)="cancel()">cancel</button>
-          </div>
-          <div *ngIf="!isEditing">
-            {{pokemon.name | uppercase}}
-          </div>
-      </mat-card-title>
-      <mat-card-subtitle class="all-types">
-        <span *ngFor="let type of pokemon.types.types" [style.background-color]="utilService.lightenDarkenColor(typeColorConverter(type),40)"  class="element-type">&nbsp;{{type}}&nbsp;</span>
-      </mat-card-subtitle>
+    <div class="top-upper-part">
+      <div class="top-container-left">
+        <mat-card-title class="name"> 
+            <fa class="edit-icon" name="edit" (click)="edit(pokemon)"></fa>
+            <div *ngIf="isEditing">
+              <input #editPokemonName [value]="pokemon.name" placeholder="name"/>
+              <button (click)="save()">save</button>
+              <button (click)="cancel()">cancel</button>
+            </div>
+            <div *ngIf="!isEditing">
+              {{pokemon.name | uppercase}}
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle class="all-types">
+          <span *ngFor="let type of pokemon.types.types" [style.background-color]="utilService.lightenDarkenColor(typeColorConverter(type),40)"  class="element-type">&nbsp;{{type}}&nbsp;</span>
+        </mat-card-subtitle>
+      </div>
+  
+  
+      <div class="top-container-right">
+        #{{pokemon.number}}
+      </div>
     </div>
-    <div class="top-container-2">
-      #{{pokemon.number}}
-    </div>
-    <div class="middle-container">
-      <img class="pokemon-image" [src]="pokemon.images.smallImage"
-        alt="pokemon sprite">
+    <div class="top-lower-part">
+        <div class="middle-container">
+            <img class="pokemon-image" [src]="pokemon.images.smallImage"
+              alt="pokemon sprite">
+        </div>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150" height="226.71px" viewBox="0 0 220.68 226.71" style="position:absolute;enable-background:new 0 0 220.68 226.71;" xml:space="preserve"> <style type="text/css"></style><defs></defs><path class="st0" d="M106.53,32.5" /><path class="st0" d="M63.53,42.5" /><path class="st0" d="M0.53,107.5h74c-0.05-2.08-0.12-15.72,11-26c10.78-9.97,23.86-9.17,26-9c2.48,0.07,15.05,0.65,25,11 c9.32,9.7,9.93,21.3,10,24c24.33,0,48.67,0,73,0c-0.8-9.3-4.92-43.97-34-73c-29.94-29.88-65.92-33.38-75-34 c-9.12,0.23-43.33,2.2-73,29C3.95,59.83,0.96,99.6,0.53,107.5z" /> <path class="st0"   d="M220.14,120.5l-73.99-0.86c0.02,2.08-0.06,15.72-11.3,25.87c-10.9,9.84-23.96,8.89-26.1,8.7   c-2.48-0.09-15.05-0.83-24.87-11.29c-9.21-9.8-9.68-21.41-9.72-24.11c-24.33-0.28-48.66-0.57-73-0.85   c0.7,9.31,4.4,44.03,33.15,73.39c29.6,30.23,65.53,34.15,74.6,34.87c9.12-0.13,43.35-1.69,73.33-28.15   C216.17,168.13,219.62,128.39,220.14,120.5z" />   <path class="st0"     d="M110.53,139.5L110.53,139.5c-14.91,0-27-12.09-27-27v0c0-14.91,12.09-27,27-27h0c14.91,0,27,12.09,27,27v0     C137.53,127.41,125.44,139.5,110.53,139.5z" />   </svg> 
+
     </div>
 
   </mat-card-header>

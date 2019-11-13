@@ -1,5 +1,6 @@
-<mat-grid-list class="pokemon-list" [cols]="breakpoint" rowHeight="150px"
+<mat-grid-list class="pokemon-list" rowHeight="150px"
   gutterSize="20px"
+  [cols] = breakpoint
   (window:resize)="onResize($event)">
   <div *ngIf="pokemonArray">
     <mat-grid-tile class="pokemon-card"
