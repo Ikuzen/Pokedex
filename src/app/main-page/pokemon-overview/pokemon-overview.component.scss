@@ -3,19 +3,22 @@
   background: transparent; /* make scrollbar transparent */
 }
 
-.pokemon-card-2{
-  border-radius: 50px !important;
-}
-mat-card-header{
+mat-card{
+  padding: 0!important;
+  border-radius: 25px !important;
+
+  mat-card-header{
   display: flex;
   flex-direction: column !important;
-  border-top-left-radius:25px;
-  border-top-right-radius:25px;
   padding-top: 20px;
 
   .top-upper-part{
     display: flex;
     flex-direction: row;
+    .ng-star-inserted{
+      display: flex;
+      flex-direction: column;
+    }
     .top-container-left{
       display: flex;
       flex-wrap: wrap;
@@ -70,6 +73,9 @@ mat-card-header{
         align-items: center;
         justify-content: center;
         display: flex;
+        img{
+          z-index: 1;
+        }
     }
     svg{
       top: 1vh;
@@ -80,16 +86,13 @@ mat-card-header{
       }
     }
   }
-}
-mat-card-content{
+  }
+  mat-card-content{
   .mat-tab-group{
     background-color: #FFFFFF!important;
-    border-bottom-left-radius: 25px!important;
-    border-bottom-right-radius: 25px!important;
+    border-radius: 25px ;
   }
   .mat-tab-labels { 
-    border-top-left-radius: 25px!important;
-    border-top-right-radius: 25px!important;
     .mat-tab-label{
       min-width: 72px !important;
       padding: 5px;
@@ -104,8 +107,8 @@ mat-card-content{
     margin-left: 20px;
   }
   .pokemon-info-tab{
-    border-bottom-left-radius: 30px ;
-    border-bottom-right-radius: 30px ;
+    border-radius: 25px ;
+
     .info-content{
       .info-line{
         display: flex;
@@ -145,6 +148,7 @@ mat-card-content{
     
   }
   
+  }
 }
 
 

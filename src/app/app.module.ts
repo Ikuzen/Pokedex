@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PokedexListComponent } from './main-page/pokedex-list/pokedex-list.component';
 import { PokemonOverviewComponent } from './main-page/pokemon-overview/pokemon-overview.component';
-import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule, MatTabsModule, MatTabChangeEvent, MatAutocompleteModule } from '@angular/material';
+import {MatGridListModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule, MatProgressBarModule, MatCardModule, MatTabsModule, MatTabChangeEvent, MatAutocompleteModule, MatProgressSpinnerModule, MatSnackBarModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SearchBarComponent } from './main-page/search-bar/search-bar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -49,7 +49,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     ScrollingModule,
     MatButtonModule,
     MatAutocompleteModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

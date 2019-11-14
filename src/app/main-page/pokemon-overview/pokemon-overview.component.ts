@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { Pokemon } from 'src/app/pokemon';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent, MatSnackBar } from '@angular/material';
 import { UtilService } from 'src/app/util.service';
 import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 
@@ -16,7 +16,7 @@ export class PokemonOverviewComponent implements OnInit {
   isEditing = false;
   @ViewChild('editPokemonName', {static: false }) inputPokemonName: ElementRef<HTMLInputElement>;
 
-  constructor(public utilService: UtilService, public pokeApiService: PokeApiService) {
+  constructor(public utilService: UtilService, public pokeApiService: PokeApiService, private _snackBar: MatSnackBar) {
     this.utilService = utilService;
     this.pokeApiService = pokeApiService;
    }
@@ -40,7 +40,12 @@ export class PokemonOverviewComponent implements OnInit {
     this.isEditing = false;
     this.pokeApiService.updatePokemon(this.pokemon).subscribe();
     console.log(this.pokemon);
-
+    this.saveNotification(`Pokemon ${this.pokemon.name} saved.`,'close')
+  }
+  saveNotification(message:string, action:string ): void {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   typeColor(pokemon): string {
