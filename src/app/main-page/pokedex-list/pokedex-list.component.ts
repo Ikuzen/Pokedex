@@ -11,23 +11,59 @@ import { UtilService } from 'src/app/util.service';
 export class PokedexListComponent implements OnInit {
   @Input() pokemonArray: Pokemon[] = [];
   @Output() highlightedPokemon = new EventEmitter<Pokemon>();
+  currentPokemon: Pokemon;
   breakpoint: number;
-
-  constructor(public utilService:UtilService) {
+  isSmallScreen: boolean;
+  constructor(public utilService: UtilService) {
     this.utilService = utilService;
   }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 800) ? 1 : 2;
+    if (window.innerWidth < 600) {
+      this.breakpoint = 2;
+    } else if (window.innerWidth < 700) {
+      this.breakpoint = 3;
+    } else if (window.innerWidth < 800) {
+      this.breakpoint = 4;
+    } else if (window.innerWidth < 850) {
+      this.breakpoint = 2;
+    } else if (window.innerWidth < 900) {
+      this.breakpoint = 2;
+    } else{
+      this.breakpoint = 2;
+    }
+    this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 2;
+    if (window.innerWidth < 600) {
+      this.breakpoint = 2;
+    } else if (window.innerWidth < 700) {
+      this.breakpoint = 3;
+    } else if (window.innerWidth < 800) {
+      this.breakpoint = 4;
+    } else if (window.innerWidth < 850) {
+      this.breakpoint = 2;
+    } else if (window.innerWidth < 900) {
+      this.breakpoint = 2;
+    }
+    else{
+      this.breakpoint = 2;
+    }
+    this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
   }
 
   highlightPokemon(pokemon) {
     this.highlightedPokemon.emit(pokemon);
+    this.currentPokemon = pokemon;
     console.log(pokemon);
+  }
+  ifHighlighted(pokemon){
+    if (pokemon === this.currentPokemon){
+      return 'black 3px double';
+    } else {
+      return 'none';
+    }
   }
 
   typeColor(pokemon): string {
@@ -53,7 +89,7 @@ export class PokedexListComponent implements OnInit {
     }
     return '#aaa9ad';
   }
-  typeColorConverter(color:string){
+  typeColorConverter(color: string) {
     switch (color) {
       case 'grass':
         return '#48d0b0';

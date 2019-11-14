@@ -4,88 +4,155 @@
 }
 
 .pokemon-card-2{
-  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
-    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
-    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
-    
-    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,78%) 53%,
-    hsl(0,0%,70%)100%);
+  border-radius: 50px !important;
 }
-.top-infos{
-  border: 2mm ridge rgba(195, 199, 121, 0.837);
+mat-card-header{
   display: flex;
-  flex-direction: row;
+  flex-direction: column !important;
   border-top-left-radius:25px;
   border-top-right-radius:25px;
-  .top-container-1{
+  padding-top: 20px;
+
+  .top-upper-part{
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    .name{
-      font-family: fantasy;
-      color:#F9F9F9;
-      display:flex;
-    }
-    .element-type{
+    flex-direction: row;
+    .top-container-left{
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
-      border-radius: 20px;
-      border: solid 2px gray;
-      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;      width: 50%;
-      color:#F9F9F9;
-
+      margin-left: 20px;
+      .name{
+        font-family: fantasy;
+        color:#F9F9F9;
+        display:flex;
+      }
+      .edit-icon{
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      .button-group{
+        display: inline;
+        button{
+          opacity: 0.9 ;
+          &:hover{
+            opacity: 1;
+          }
+        }
+      }
+      .element-type{
+        display: flex;
+        flex-direction: row;
+        border-radius: 20px;
+        border: solid 2px gray;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; 
+        width: 50%;
+        color:#F9F9F9;
+        
+      }
+      mat-card-subtitle{
+        display: flex;
+      }
+    }
+      .top-container-right{
+        flex-basis: 50%;
+        width: 50%;
+        display: flex!important;
+        justify-content: flex-end!important;
+        margin-right: 20px!important;
+        font-family: fantasy;
+        color: #F9F9F9;
+        flex-grow: 3!important;
+      }
+    }
+    .top-lower-part{
+      .middle-container{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    svg{
+      top: 1vh;
+      opacity: 0.3;
+      left: 24vw;
+      .st0{
+        // fill:red;
+      }
     }
   }
-  .top-container-2{
-    // flex-basis: 50%;
-    width: 50%;
-    justify-items: flex-end;
-
-  }
 }
+mat-card-content{
+  .mat-tab-group{
+    background-color: #FFFFFF!important;
+    border-bottom-left-radius: 25px!important;
+    border-bottom-right-radius: 25px!important;
+  }
+  .mat-tab-labels { 
+    border-top-left-radius: 25px!important;
+    border-top-right-radius: 25px!important;
+    .mat-tab-label{
+      min-width: 72px !important;
+      padding: 5px;
+      @media (max-width: 400){
+        max-width: 50px
+      }
 
-.pokemon-info-tab{
-  border: 2mm ridge rgba(195, 199, 121, 0.837);
-  border-bottom-left-radius: 30px ;
-  border-bottom-right-radius: 30px ;
-
-  background-color: x0F9F9F9;
-  .about{}
-  .base-stats{
-    .hp.attack.defense.sp-atk.sp-def.evolutions.moves{
-      // display: flex;
-      // flex-direction: row ;
     }
+  
   }
-  .evolution{}
-  .moves{}
+  .mat-tab-body-content{
+    margin-left: 20px;
+  }
+  .pokemon-info-tab{
+    border-bottom-left-radius: 30px ;
+    border-bottom-right-radius: 30px ;
+    .info-content{
+      .info-line{
+        display: flex;
+        .info-name{
+          min-width: 100px;
+          font-family: monospace;
+          color: rgb(167,170,174)
+        }
+        .info-value{
+          min-width: 30px;
+        }
+      }
+    }
+    .hp,.attack,.defense,.sp-atk,.sp-def,.speed,.total{
+      display: flex !important;
+      align-items: center !important;
+      .stat-name{
+        min-width: 70px;
 
-}
+      }
+      .stat-value{
+        min-width: 30px
+      }
 
-.pokemon-image{
+    }
+    
+    .base-stats{
+      display: flex !important;
+
+    }
+    .evolution{}
+    .moves{}
+  
+  }
+  
+  .pokemon-image{
+    
+  }
   
 }
 
 
 
 //restyling
-.mat-tab-label { 
-  min-width: 72px !important;
-  padding: 5px;
-  @media (max-width: 600px){
-    min-width: 25px
-  }
 
-}
-.mat-tab-body-content{
-  margin-left: 20px;
-}
-.mat-tab-group{
-  background-color: silver!important;
-  border-bottom-left-radius: 25px!important;
-  border-bottom-right-radius: 25px!important;
 
-}
+// mat-card{
+//   display: block;
+// }
 

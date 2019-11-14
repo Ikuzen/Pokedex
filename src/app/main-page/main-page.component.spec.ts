@@ -54,35 +54,24 @@ describe('MainPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getPokemonUrls() on init', () => {
-    spyOn(component, 'getPokemonUrls');
+  it('should call getAllPokemons() on init', () => {
+    spyOn(component, 'getAllPokemons');
     component.ngOnInit();
-    expect(component.getPokemonUrls).toHaveBeenCalled();
+    expect(component.getAllPokemons).toHaveBeenCalled();
+  });
+  it('should call emitPokemon() when currentPokemon changes', () => {
+    spyOn(component, 'emitPokemon');
+    component.ngOnInit();
+    component.currentPokemon = new Pokemon();
+    expect(component.emitPokemon).toHaveBeenCalled();
   });
 
-  // it('should call emitPokemon when input changes', () => {
 
-  // });
+  // it('should call onResize when window.innersize changes'){
 
-  it('should call getpokemonUrls() when calling nextPage()', () => {
-    spyOn(component,'getPokemonUrls');
-    component.nextPage();
-    expect(component.getPokemonUrls).toHaveBeenCalled();
-  });
+  //   window.innerWidth = 700;
+  //   expect(component.)
 
-  it('should call getpokemonUrls() when calling previousPage()', () => {
-    spyOn(component,'getPokemonUrls');
-    component.previousPage();
-    expect(component.getPokemonUrls).toHaveBeenCalled();
-  });
+  // }
 
-  // it('should not display previous page if at the first page', () => {
-
-  // });
-  // it('should transfer hightlighted pokemon from pokedexlist component to pokemonoverview component', () => {
-  //   const mockPokemon = new Pokemon();
-  //   mockPokemon.name = 'test';
-  //   childDebugElement1.highlightPokemon(mockPokemon);
-  //   expect(childDebugElement2.pokemon.name).toBe('test');
-  // });
 });

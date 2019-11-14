@@ -1,34 +1,53 @@
 .wrapper{
   display: grid;
-  grid-template-columns: 45% 5% 50%;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 100%;
+    grid-template-areas: "top"
+    "pokemon-list "
+    "pokemon-overview ";
+  }
+  @media screen and (min-width: 800px) {
+    grid-template-columns: 45% 5% 50%;
+    grid-template-areas: "top top top"
+    "pokemon-list . pokemon-overview ";
+  }
   grid-auto-rows: minmax(100px, auto);
 
-  grid-template-areas: "top top top"
-  "pokemon-list . pokemon-overview ";
+
+
   width: 90vw;
   // max-height: 100vh;
   margin: 0 auto;
   overflow: hidden;
-
+  svg{
+    position: absolute;
+    top: -10vh;
+    z-index: -1000;
+  }
   
   .top{
     grid-area: top;
     display:grid;
     grid-template-columns: repeat(9,1fr);
     grid-auto-rows: minmax(20px, auto);
-    grid-template-areas:
-    "title title . . . . search-bar search-bar search-bar"
-    "title title previous-page next-page . . . . .";
-
-
+    @media screen and (min-width: 800px) {
+      grid-template-areas:
+      "title title . . . . nav-bar nav-bar nav-bar"
+      "title title . . . . . . .";
+    }
+    @media screen and (max-width: 800px) {
+      grid-template-areas:
+    ". .  . . . . . . ."
+    "title title . . . . . nav-bar .";
+    }
+    svg{
+      grid-area:nav-bar;
+    }
+    .nav-bar{
+      grid-area: nav-bar;
+    }
     .title{
       grid-area:title
-    }
-    .next-page{
-      grid-area:next-page
-    }
-    .previous-page{
-      grid-area:previous-page
     }
     .search-icon{
       grid-area:search-icon

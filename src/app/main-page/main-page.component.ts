@@ -11,13 +11,18 @@ export class MainPageComponent implements OnInit {
   currentPokemon: Pokemon;
   error: any;
   private allPokemonArray: Pokemon[];
-
+  isSmallScreen: boolean;
   constructor(public pokeApiService: PokeApiService) {
     this.pokeApiService = pokeApiService;
-    this.getAllPokemons();
   }
 
   ngOnInit() {
+    this.getAllPokemons();
+    this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
+  }
+
+  onResize(event) {
+    this.isSmallScreen = (event.target.innerWidth <= 800) ? true : false;
   }
 
   getAllPokemons(url = this.pokeApiService.baseURL) {
@@ -37,13 +42,5 @@ emitPokemon(pokemon: Pokemon) {
     console.log(this.currentPokemon.name);
 }
 
-// nextPage() {
-//   this.pokemonArray.length = 0;
-//   this.getPokemonUrls(this.nextPageUrl);
-// }
-// previousPage() {
-//   this.pokemonArray.length = 0;
-//   this.getPokemonUrls(this.previousPageUrl);
-// }
 }
 
