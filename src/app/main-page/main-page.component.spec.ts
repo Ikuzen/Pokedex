@@ -7,23 +7,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MatGridListModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatInputModule, MatTabsModule, MatProgressBarModule, MatCardModule } from '@angular/material';
+import { MatGridListModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatInputModule, MatTabsModule, MatProgressBarModule, MatCardModule, MatProgressSpinnerModule, MatSnackBarModule, MatAutocompleteModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MockComponent } from 'ng-mocks';
-import { By } from '@angular/platform-browser';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
-  // const childComponentList: PokedexListComponent = new PokedexListComponent();
-  // const childComponentOverview: PokemonOverviewComponent = new PokemonOverviewComponent();
   let fixture: ComponentFixture<MainPageComponent>;
-  // let childDebugElement1 = fixture.debugElement(PokedexListComponent);
-  // let childDebugElement2 = fixture.debugElement(PokemonOverviewComponent);
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageComponent, MockComponent(PokemonOverviewComponent), MockComponent(PokedexListComponent) ],
+      declarations: [ MainPageComponent, MockComponent(PokemonOverviewComponent), MockComponent(PokedexListComponent), SearchBarComponent ],
       imports: [FormsModule,
         ReactiveFormsModule,
         AppRoutingModule,
@@ -39,7 +38,12 @@ describe('MainPageComponent', () => {
         MatTabsModule,
         MatProgressBarModule,
         MatCardModule,
-        ScrollingModule]
+        ScrollingModule,
+      AngularFontAwesomeModule,
+    MatProgressSpinnerModule,
+  MatSnackBarModule,
+MatAutocompleteModule,
+BrowserAnimationsModule]
     })
     .compileComponents();
   }));
@@ -59,19 +63,12 @@ describe('MainPageComponent', () => {
     component.ngOnInit();
     expect(component.getAllPokemons).toHaveBeenCalled();
   });
-  it('should call emitPokemon() when currentPokemon changes', () => {
-    spyOn(component, 'emitPokemon');
-    component.ngOnInit();
-    component.currentPokemon = new Pokemon();
-    expect(component.emitPokemon).toHaveBeenCalled();
+  it('should change currentPokemon when calling submitPokemon', () => {
+    const mockPokemon = {id: 1, name: 'mock', height: 1, weight: 1, images: [], moves:[], stats: {}, types: {types: ['fire']}};
+    component.submitPokemon(mockPokemon);
+    // tslint:disable-next-line: max-line-length
+    expect(component.currentPokemon).toEqual({id: 1, name: 'mock', height: 1, weight: 1, images: [], moves:[], stats: {}, types: {types: ['fire']}});
   });
 
-
-  // it('should call onResize when window.innersize changes'){
-
-  //   window.innerWidth = 700;
-  //   expect(component.)
-
-  // }
 
 });

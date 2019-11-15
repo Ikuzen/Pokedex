@@ -4,7 +4,7 @@
     <div class="top-upper-part">
       <div class="top-container-left">
         <mat-card-title class="name"> 
-            <fa class="edit-icon" name="edit" (click)="edit(pokemon)"></fa>
+            <fa class="edit-icon" name="edit" (click)="edit()"></fa>
             <div *ngIf="isEditing">
               <input #editPokemonName [value]="pokemon.name" placeholder="name"/>
               <div class="button-group">
@@ -38,7 +38,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-tab-group class="pokemon-info-tab" (selectedTabChange)="onTabChange($event)">
+    <mat-tab-group class="pokemon-info-tab">
       <mat-tab class="about" label="About" min-width="100px">
         <ng-template matTabContent>
           <div class="info-content">

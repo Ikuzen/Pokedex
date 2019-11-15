@@ -29,7 +29,7 @@ export class PokedexListComponent implements OnInit {
       this.breakpoint = 2;
     } else if (window.innerWidth < 900) {
       this.breakpoint = 2;
-    } else{
+    } else {
       this.breakpoint = 2;
     }
     this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
@@ -46,8 +46,7 @@ export class PokedexListComponent implements OnInit {
       this.breakpoint = 2;
     } else if (window.innerWidth < 900) {
       this.breakpoint = 2;
-    }
-    else{
+    } else {
       this.breakpoint = 2;
     }
     this.isSmallScreen = (window.innerWidth <= 800) ? true : false;
@@ -58,8 +57,8 @@ export class PokedexListComponent implements OnInit {
     this.currentPokemon = pokemon;
     console.log(pokemon);
   }
-  ifHighlighted(pokemon){
-    if (pokemon === this.currentPokemon){
+  ifHighlighted(pokemon) {
+    if (pokemon === this.currentPokemon) {
       return 'black 3px double';
     } else {
       return 'none';
@@ -67,30 +66,10 @@ export class PokedexListComponent implements OnInit {
   }
 
   typeColor(pokemon): string {
-    for (const type of pokemon.types.types) {
-      switch (type) {
-        case 'grass':
-          return '#48d0b0';
-        case 'poison':
-          return '#a040a0';
-        case 'fire':
-          return '#fb6c6c';
-        case 'water':
-          return '#76bdfe';
-        case 'electric':
-          return '#ffd86f';
-        case 'normal':
-          return '#a9a978';
-        case 'steel':
-          return '#b8b8d0';
-        case 'bug':
-          return '#9eb820';
-      }
-    }
-    return '#aaa9ad';
+    return this.typeColorConverter(pokemon.types.types[0]);
   }
-  typeColorConverter(color: string) {
-    switch (color) {
+  typeColorConverter(element: string) {
+    switch (element) {
       case 'grass':
         return '#48d0b0';
       case 'poison':

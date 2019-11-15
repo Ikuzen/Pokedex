@@ -10,7 +10,7 @@
         <app-search-bar class="search-bar" *ngIf="allPokemonArray"
           [allPokemonArray]="allPokemonArray"
           [currentPokemon]="currentPokemon"
-          (submitPokemon)="emitPokemon($event)">
+          (submitPokemon)="submitPokemon($event)">
         </app-search-bar>
       </div>
       <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In  -->
@@ -19,6 +19,6 @@
     </div>
   
   <app-pokedex-list [pokemonArray]="allPokemonArray"
-              (highlightedPokemon)="emitPokemon($event)"></app-pokedex-list>
+    (highlightedPokemon)="submitPokemon($event)"></app-pokedex-list>
   <app-pokemon-overview [pokemon]="currentPokemon"></app-pokemon-overview>
 </div>

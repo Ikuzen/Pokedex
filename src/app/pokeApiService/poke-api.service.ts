@@ -15,9 +15,9 @@ export class PokeApiService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
+      Authorization: 'my-auth-token'
     })
-  }
+  };
 
   constructor(private http: HttpClient) {
   }
@@ -49,16 +49,17 @@ export class PokeApiService {
   //   );
   // }
 
-  updatePokemon(pokemon){
+  updatePokemon(pokemon) {
     console.log('updating pokemon');
     return this.http.put<Pokemon>(this.baseURL + '/pokemon', pokemon, this.httpOptions)
-    // .pipe(
-    //   catchError(this.handleError('updatePokemon', pokemon))
-    // );
+    .pipe(
+      finalize(() => {
+      })
+    )
   }
 
 
-  deletePokemon(pokemonName){
+  deletePokemon(pokemonName) {
     console.log('deleting Pokemon ' + pokemonName);
     return this.http.delete(pokemonName)
     .pipe(
@@ -67,17 +68,4 @@ export class PokeApiService {
     );
   }
 
-
-  handleError(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
 }

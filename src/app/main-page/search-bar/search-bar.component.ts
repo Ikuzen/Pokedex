@@ -12,7 +12,7 @@ import { PokeApiService } from 'src/app/pokeApiService/poke-api.service';
 })
 export class SearchBarComponent implements OnInit {
 
-  @Input() allPokemonArray: any;
+  @Input() allPokemonArray: Pokemon[];
   @Input() currentPokemon: Pokemon;
   @Output() submitPokemon = new EventEmitter<Pokemon>();
   pokemonCtrl = new FormControl();
@@ -35,7 +35,7 @@ export class SearchBarComponent implements OnInit {
    private _filterPokemons(value: string): any[] {
     const filterValue = value.toLowerCase();
 
-    return this.allPokemonArray.results.filter(pokemon => pokemon.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.allPokemonArray.filter(pokemon => pokemon.name.toLowerCase().indexOf(filterValue) === 0);
   }
   submit() {
     this.searchField = document.getElementById('searchField');

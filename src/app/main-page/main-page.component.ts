@@ -37,7 +37,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-emitPokemon(pokemon: Pokemon) {
+submitPokemon(pokemon: Pokemon) {
     this.currentPokemon = pokemon;
     console.log(this.currentPokemon.name);
 }

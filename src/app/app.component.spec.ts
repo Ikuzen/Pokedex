@@ -4,11 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { MatGridListModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatInputModule, MatTabsModule, MatProgressBarModule, MatCardModule } from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import { MatGridListModule, MatToolbarModule, MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatInputModule, MatTabsModule, MatProgressBarModule, MatCardModule, MatSnackBarModule, MatSpinner, MatProgressSpinnerModule, MatAutocomplete, MatAutocompleteModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PokedexListComponent } from './main-page/pokedex-list/pokedex-list.component';
 import { PokemonOverviewComponent } from './main-page/pokemon-overview/pokemon-overview.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SearchBarComponent } from './main-page/search-bar/search-bar.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -17,7 +20,8 @@ describe('AppComponent', () => {
         AppComponent,
         MainPageComponent,
         PokedexListComponent,
-        PokemonOverviewComponent,      ],
+        PokemonOverviewComponent,
+        SearchBarComponent],
       imports:[FormsModule,
         ReactiveFormsModule,
         AppRoutingModule,
@@ -34,7 +38,11 @@ describe('AppComponent', () => {
         MatProgressBarModule,
         MatCardModule,
         ScrollingModule,
-        AppRoutingModule]
+        AppRoutingModule,
+        MatSnackBarModule,
+        AngularFontAwesomeModule,
+        MatProgressSpinnerModule,
+      MatAutocompleteModule]
     }).compileComponents();
   }));
 

@@ -21,13 +21,10 @@ export class PokemonOverviewComponent implements OnInit {
     this.pokeApiService = pokeApiService;
    }
 
-  // ngOnChanges(){
-  //   this.resetSelectedIndex();
-  // }
-
   ngOnInit() {
   }
-  edit(pokemon: Pokemon): void {
+
+  edit(): void {
     this.isEditing = true;
   }
 
@@ -40,40 +37,21 @@ export class PokemonOverviewComponent implements OnInit {
     this.isEditing = false;
     this.pokeApiService.updatePokemon(this.pokemon).subscribe();
     console.log(this.pokemon);
-    this.saveNotification(`Pokemon ${this.pokemon.name} saved.`,'close')
+    this.saveNotification(`Pokemon ${this.pokemon.name} saved.`, 'close');
   }
-  saveNotification(message:string, action:string ): void {
+
+  saveNotification(message: string, action: string ): void {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
   }
 
-  typeColor(pokemon): string {
-    for (const type of pokemon.types.types) {
-      switch (type) {
-        case 'grass':
-          return '#48d0b0';
-        case 'poison':
-          return '#a040a0';
-        case 'fire':
-          return '#fb6c6c';
-        case 'water':
-          return '#76bdfe';
-        case 'electric':
-          return '#ffd86f';
-        case 'normal':
-          return '#a9a978';
-        case 'steel':
-          return '#b8b8d0';
-        case 'bug':
-          return '#9eb820';
-      }
-    }
-    return 'aaa9ad';
+  typeColor(pokemon: Pokemon): string {
+    return this.typeColorConverter(pokemon.types.types[0]);
   }
 
-  typeColorConverter(color: string) {
-    switch (color) {
+  typeColorConverter(element: string) {
+    switch (element) {
       case 'grass':
         return '#48d0b0';
       case 'poison':
@@ -102,12 +80,5 @@ export class PokemonOverviewComponent implements OnInit {
   resetSelectedIndex() {
     return 0;
   }
+}
 
-  onTabChange(event: MatTabChangeEvent) {
-    console.log('test');
-    if (event.index !== 0) {
-      event.index = 0;
-      console.log('reussi');
-  }
-}
-}
